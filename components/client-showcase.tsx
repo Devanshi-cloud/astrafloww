@@ -55,9 +55,8 @@ export default function ClientShowcase() {
     <section
       id="work"
       ref={ref}
-      className="pixel-grid-bg"
+      className="pixel-grid-bg py-12 md:py-24 px-4 sm:px-6"
       style={{
-        padding: "6rem 1.5rem",
         borderTop: "2px solid var(--ink)",
       }}
     >
@@ -107,28 +106,25 @@ export default function ClientShowcase() {
         </div>
 
         {/* Project grid */}
-        <div
-          className="grid gap-0"
-          style={{
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            border: "2px solid var(--ink)",
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-[var(--ink)]">
           {PROJECTS.map((project, i) => (
             <motion.div
               key={project.name}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.45, delay: i * 0.1 }}
-              style={{
-                padding: "2rem",
-                borderRight:
-                  i < PROJECTS.length - 1 ? "2px solid var(--ink)" : "none",
-                backgroundColor: "var(--cloud-white)",
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-              }}
+              className={`p-6 sm:p-8 bg-[var(--cloud-white)] flex flex-col gap-4 border-[var(--ink)] ${
+                /* Mobile: horizontal dividers between stacked cards */
+                i < PROJECTS.length - 1 ? "border-b-2" : "border-b-0"
+              } ${
+                /* Tablet md (2 cols): right divider on odd items, bottom divider on first row */
+                i % 2 === 0 ? "md:border-r-2" : "md:border-r-0"
+              } ${
+                i < 2 ? "md:border-b-2" : "md:border-b-0"
+              } ${
+                /* Desktop lg (4 cols): right divider on items 0-2, no bottom divider */
+                i < PROJECTS.length - 1 ? "lg:border-r-2" : "lg:border-r-0"
+              } lg:border-b-0`}
             >
               {/* Tag */}
               <span

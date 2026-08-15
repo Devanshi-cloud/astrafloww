@@ -156,20 +156,10 @@ export default function LandingPage() {
         background="var(--paper)"
       />
       <section
-        className="pink-section"
-        style={{
-          padding: "4rem 1.5rem",
-          position: "relative",
-        }}
+        className="pink-section py-10 md:py-16 px-4 sm:px-6 relative"
       >
         <div
-          className="max-w-4xl mx-auto"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "3rem",
-            justifyContent: "center",
-          }}
+          className="max-w-4xl mx-auto flex items-center justify-center gap-6 md:gap-12"
         >
           <PixelFlower
             size={56}
@@ -213,17 +203,13 @@ export default function LandingPage() {
       {/* 4. Who We Are */}
       <section
         id="who-we-are"
-        className="pixel-grid-bg"
+        className="pixel-grid-bg py-12 md:py-24 px-4 sm:px-6"
         style={{
-          padding: "6rem 1.5rem",
           borderTop: "2px solid var(--ink)",
         }}
       >
         <div className="max-w-7xl mx-auto">
-          <div
-            className="grid gap-12 items-start"
-            style={{ gridTemplateColumns: "1fr 1.4fr" }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-8 md:gap-12 items-start">
             <div>
               <p
                 style={{
@@ -251,12 +237,7 @@ export default function LandingPage() {
                 }}
               />
             </div>
-            <div
-              style={{
-                borderLeft: "3px solid var(--ink)",
-                paddingLeft: "2rem",
-              }}
-            >
+            <div className="border-t-2 md:border-t-0 md:border-l-3 border-[var(--ink)] pt-6 md:pt-0 md:pl-8">
               <p
                 style={{
                   fontFamily: "var(--font-inter), sans-serif",
@@ -297,8 +278,7 @@ export default function LandingPage() {
       />
       <section
         id="services-for"
-        className="pink-section"
-        style={{ padding: "5rem 1.5rem" }}
+        className="pink-section py-12 md:py-20 px-4 sm:px-6"
       >
         <div className="max-w-7xl mx-auto">
           <div style={{ marginBottom: "3rem", textAlign: "center" }}>
@@ -322,12 +302,7 @@ export default function LandingPage() {
             </h2>
           </div>
 
-          <div
-            className="grid gap-6"
-            style={{
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            }}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {AUDIENCE_SEGMENTS.map((seg) => (
               <ServiceCard
                 key={seg.title}
@@ -354,9 +329,8 @@ export default function LandingPage() {
       {/* 7. Services We Provide */}
       <section
         id="services"
-        className="pixel-grid-bg"
+        className="pixel-grid-bg py-12 md:py-24 px-4 sm:px-6"
         style={{
-          padding: "6rem 1.5rem",
           borderTop: "2px solid var(--ink)",
         }}
       >
@@ -381,12 +355,7 @@ export default function LandingPage() {
             </h2>
           </div>
 
-          <div
-            className="grid gap-6"
-            style={{
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            }}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {SERVICES.map((service) => (
               <ServiceCard
                 key={service.title}
@@ -409,12 +378,8 @@ export default function LandingPage() {
               marginTop: "3rem",
               paddingTop: "3rem",
               borderTop: "2px solid var(--grid-line)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              gap: "1.5rem",
             }}
+            className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
           >
             <div>
               <p
@@ -441,27 +406,12 @@ export default function LandingPage() {
                 Drop us a message — we respond within 24 hours.
               </p>
             </div>
-            <a href="/contact" className="btn-primary" id="services-cta">
+            <a href="/contact" className="btn-primary w-full sm:w-auto text-center justify-center" id="services-cta">
               Get In Touch &rarr;
             </a>
           </div>
         </div>
       </section>
-
-      {/* Inline styles for grid column on smaller screens */}
-      <style>{`
-        @media (max-width: 768px) {
-          #who-we-are .grid {
-            grid-template-columns: 1fr !important;
-          }
-          #who-we-are .border-left-section {
-            border-left: none;
-            padding-left: 0;
-            border-top: 3px solid var(--ink);
-            padding-top: 2rem;
-          }
-        }
-      `}</style>
     </>
   );
 }

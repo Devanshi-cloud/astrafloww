@@ -18,11 +18,8 @@ export default function Hero() {
         alignItems: "center",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 w-full py-20">
-        <div
-          className="grid gap-16 items-center"
-          style={{ gridTemplateColumns: "1fr 1fr" }}
-        >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full py-12 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Left: Text */}
           <div>
             {/* Eyebrow */}
@@ -39,6 +36,7 @@ export default function Hero() {
                 marginBottom: "1.5rem",
                 display: "flex",
                 alignItems: "center",
+                flexWrap: "wrap",
                 gap: "0.5rem",
               }}
             >
@@ -95,12 +93,12 @@ export default function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.45 }}
-              style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}
+              className="flex flex-col sm:flex-row gap-4"
             >
-              <Link href="/contact" className="btn-primary" id="hero-cta-primary">
+              <Link href="/contact" className="btn-primary justify-center text-center w-full sm:w-auto" id="hero-cta-primary">
                 Let&apos;s Start! &rarr;
               </Link>
-              <a href="#work" className="btn-outline" id="hero-cta-secondary">
+              <a href="#work" className="btn-outline justify-center text-center w-full sm:w-auto" id="hero-cta-secondary">
                 View Work
               </a>
             </motion.div>

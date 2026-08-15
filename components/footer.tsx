@@ -28,10 +28,7 @@ export default function Footer() {
     >
       {/* Main footer grid */}
       <div
-        className="max-w-7xl mx-auto px-6 py-16 grid gap-12"
-        style={{
-          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-        }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12"
       >
         {/* Brand */}
         <div>
@@ -145,36 +142,6 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-
-        {/* About / parent company */}
-        {/* <div>
-          <p
-            style={{
-              fontFamily: "var(--font-ibm-plex-mono), monospace",
-              fontSize: "10px",
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              color: "var(--signal-pink)",
-              marginBottom: "1rem",
-            }}
-          >
-            About
-          </p>
-          <a
-            href="https://www.hypotenuseanalytics.com/about-us"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              fontFamily: "var(--font-ibm-plex-mono), monospace",
-              fontSize: "12px",
-              color: "rgba(255,255,255,0.75)",
-              textDecoration: "none",
-              letterSpacing: "0.04em",
-            }}
-          >
-            About Us ↗
-          </a>
-        </div> */}
       </div>
 
       {/* Bottom bar */}
@@ -182,7 +149,7 @@ export default function Footer() {
         style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
       >
         <div
-          className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between flex-wrap gap-2"
+          className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"
         >
           <p
             style={{

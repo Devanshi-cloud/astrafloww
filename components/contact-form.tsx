@@ -159,10 +159,7 @@ export default function ContactForm() {
       />
 
       {/* Name + Email row */}
-      <div
-        className="grid gap-4"
-        style={{ gridTemplateColumns: "1fr 1fr" }}
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="contact-name" style={labelStyle}>
             Name *
@@ -204,10 +201,7 @@ export default function ContactForm() {
       </div>
 
       {/* Phone + Service row */}
-      <div
-        className="grid gap-4"
-        style={{ gridTemplateColumns: "1fr 1fr" }}
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="contact-phone" style={labelStyle}>
             Phone (optional)
@@ -314,10 +308,9 @@ export default function ContactForm() {
       <button
         type="submit"
         id="contact-submit-button"
-        className="btn-primary"
+        className="btn-primary w-full sm:w-auto text-center justify-center"
         disabled={submitState === "loading"}
         style={{
-          alignSelf: "flex-start",
           opacity: submitState === "loading" ? 0.7 : 1,
           cursor: submitState === "loading" ? "not-allowed" : "pointer",
         }}

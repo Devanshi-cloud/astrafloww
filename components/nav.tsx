@@ -87,7 +87,7 @@ export default function Nav() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden flex flex-col gap-1.5 cursor-pointer bg-transparent border-0 p-1"
+          className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 cursor-pointer bg-transparent border-0 p-1"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
           aria-expanded={open}
@@ -128,25 +128,25 @@ export default function Nav() {
       {/* Mobile menu */}
       {open && (
         <div
-          className="md:hidden px-6 pb-6"
+          className="md:hidden px-6 py-6"
           style={{
             backgroundColor: "var(--paper)",
             borderTop: "1px solid var(--grid-line)",
           }}
         >
-          <ul className="list-none m-0 p-0 flex flex-col gap-4 pt-4">
+          <ul className="list-none m-0 p-0 flex flex-col gap-2">
             {NAV_LINKS.map((link) => (
               <li key={link.label}>
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
+                  className="block py-2.5 text-ink hover:text-signal-pink transition-colors"
                   style={{
                     fontFamily: "var(--font-ibm-plex-mono), monospace",
-                    fontSize: "13px",
+                    fontSize: "14px",
                     fontWeight: 500,
                     letterSpacing: "0.06em",
                     textTransform: "lowercase",
-                    color: "var(--ink)",
                     textDecoration: "none",
                   }}
                 >
@@ -154,12 +154,12 @@ export default function Nav() {
                 </Link>
               </li>
             ))}
-            <li>
+            <li className="pt-2">
               <Link
                 href="/contact"
-                className="btn-primary"
+                className="btn-primary w-full text-center justify-center"
                 onClick={() => setOpen(false)}
-                style={{ display: "inline-flex", fontSize: "12px" }}
+                style={{ fontSize: "12px", padding: "0.75rem 1.25rem" }}
               >
                 Let&apos;s Talk
               </Link>

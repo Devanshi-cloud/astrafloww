@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
+import InitialLoader from "@/components/initial-loader";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable}`}
     >
       <body className="flex flex-col min-h-screen">
+        <InitialLoader />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -14,15 +14,7 @@ export default function ContactPage() {
     <>
       {/* Hero header */}
       <section
-        className="pink-section"
-        style={{
-          paddingTop: "calc(60px + 4rem)",
-          paddingBottom: "0",
-          paddingLeft: "1.5rem",
-          paddingRight: "1.5rem",
-          position: "relative",
-          overflow: "hidden",
-        }}
+        className="pink-section pt-24 md:pt-32 pb-0 px-4 sm:px-6 relative overflow-hidden"
       >
         <div className="max-w-7xl mx-auto">
           <p
@@ -45,7 +37,7 @@ export default function ContactPage() {
             className="hero-headline"
             style={{
               color: "var(--cloud-white)",
-              marginBottom: "4rem",
+              marginBottom: "3rem",
               maxWidth: "700px",
             }}
           >
@@ -65,12 +57,10 @@ export default function ContactPage() {
 
       {/* Main content */}
       <section
-        className="pixel-grid-bg"
-        style={{ padding: "5rem 1.5rem 6rem" }}
+        className="pixel-grid-bg py-12 md:py-20 px-4 sm:px-6"
       >
         <div
-          className="max-w-7xl mx-auto grid gap-12 items-start"
-          style={{ gridTemplateColumns: "2fr 1fr" }}
+          className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10 md:gap-12 items-start"
         >
           {/* Left: Form */}
           <div>

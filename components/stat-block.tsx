@@ -54,30 +54,25 @@ export default function StatBlock() {
     <section
       id="stats"
       ref={ref}
-      className="pixel-grid-bg"
+      className="pixel-grid-bg py-12 md:py-20 px-4 sm:px-6"
       style={{
         borderTop: "2px solid var(--ink)",
         borderBottom: "2px solid var(--ink)",
-        padding: "5rem 1.5rem",
       }}
     >
       <div className="max-w-7xl mx-auto">
-        <div
-          className="grid gap-0"
-          style={{ gridTemplateColumns: "repeat(3, 1fr)" }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
           {STATS.map((stat, i) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              style={{
-                textAlign: "center",
-                padding: "2.5rem 1rem",
-                borderRight:
-                  i < STATS.length - 1 ? "2px solid var(--grid-line)" : "none",
-              }}
+              className={`text-center py-8 md:py-10 px-4 ${
+                i < STATS.length - 1
+                  ? "border-b-2 md:border-b-0 md:border-r-2 border-[var(--grid-line)]"
+                  : ""
+              }`}
             >
               <div style={{ marginBottom: "0.75rem" }}>
                 <CountUp value={stat.value} suffix={stat.suffix} />
