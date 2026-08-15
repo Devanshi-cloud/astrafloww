@@ -3,6 +3,7 @@ interface FlowerProps {
   color?: string;
   centerColor?: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export default function PixelFlower({
@@ -10,6 +11,7 @@ export default function PixelFlower({
   color = "var(--cloud-white)",
   centerColor = "var(--signal-pink)",
   className = "",
+  style,
 }: FlowerProps) {
   return (
     <svg
@@ -20,7 +22,7 @@ export default function PixelFlower({
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       aria-hidden="true"
-      style={{ imageRendering: "pixelated" }}
+      style={{ imageRendering: "pixelated", ...style }}
     >
       {/* Petals */}
       <rect x="18" y="2" width="12" height="10" fill={color} />
