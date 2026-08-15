@@ -5,6 +5,7 @@ import Link from "next/link";
 import Spaceship from "@/components/pixel-icon/spaceship";
 import PixelCloud from "@/components/pixel-icon/cloud";
 import PixelStar from "@/components/pixel-icon/star";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Hero() {
   return (
@@ -95,7 +96,17 @@ export default function Hero() {
               transition={{ duration: 0.4, delay: 0.45 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Link href="/contact" className="btn-primary justify-center text-center w-full sm:w-auto" id="hero-cta-primary">
+              <Link
+                href="/contact"
+                className="btn-primary justify-center text-center w-full sm:w-auto"
+                id="hero-cta-primary"
+                onClick={() =>
+                  trackEvent("cta_click", {
+                    location: "hero",
+                    label: "Let's Start!",
+                  })
+                }
+              >
                 Let&apos;s Start! &rarr;
               </Link>
               <a href="#work" className="btn-outline justify-center text-center w-full sm:w-auto" id="hero-cta-secondary">

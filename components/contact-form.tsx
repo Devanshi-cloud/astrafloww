@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormSchema, type ContactFormData } from "@/lib/validation";
+import { trackEvent } from "@/lib/analytics";
 
 const SERVICES = [
   "Web Development",
@@ -43,6 +44,10 @@ export default function ContactForm() {
         throw new Error(json.error || "Something went wrong");
       }
       setSubmitState("success");
+      trackEvent("booking_submitted", {
+        service: data.service,
+        has_phone: !!data.phone,
+      });
       reset();
     } catch (err) {
       setSubmitState("error");

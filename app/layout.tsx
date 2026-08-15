@@ -5,6 +5,7 @@ import Footer from "@/components/footer";
 import InitialLoader from "@/components/initial-loader";
 import CookieConsent from "@/components/CookieConsent";
 import SmoothScroll from "@/components/SmoothScroll";
+import AnalyticsGate from "@/components/AnalyticsGate";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -163,6 +164,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <main className="flex-1">{children}</main>
           <Footer />
           <CookieConsent />
+          <AnalyticsGate />
         </SmoothScroll>
       </body>
     </html>

@@ -21,11 +21,21 @@ export default function CookieConsent() {
 
   const handleAccept = () => {
     localStorage.setItem(CONSENT_KEY, "accepted");
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent("cookie-consent-change", { detail: "accepted" })
+      );
+    }
     setVisible(false);
   };
 
   const handleReject = () => {
     localStorage.setItem(CONSENT_KEY, "rejected");
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent("cookie-consent-change", { detail: "rejected" })
+      );
+    }
     setVisible(false);
   };
 
