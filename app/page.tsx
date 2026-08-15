@@ -8,9 +8,12 @@ import PixelStar from "@/components/pixel-icon/star";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AstraFloww Agency",
+  title: "AstraFloww — We don't just market. We amplify.",
   description:
-    "Bold digital agency offering web development, SEO, UI/UX design, AI development, and DevOps. We build brands that scale.",
+    "AstraFloww is a digital marketing & creative tech agency. High-performance web development, search authority (SEO), AI automation, and brand systems that scale.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 // Service-for audience segments

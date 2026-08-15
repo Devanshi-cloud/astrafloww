@@ -3,10 +3,15 @@
 import Link from "next/link";
 
 const FOOTER_LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "Who We Are", href: "#who-we-are" },
-  { label: "Work", href: "#work" },
+  { label: "Services", href: "/#services" },
+  { label: "Who We Are", href: "/#who-we-are" },
+  { label: "Work", href: "/#work" },
   { label: "Contact", href: "/contact" },
+];
+
+const LEGAL_LINKS = [
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms & Conditions", href: "/terms" },
 ];
 
 const SOCIALS = [
@@ -28,7 +33,7 @@ export default function Footer() {
     >
       {/* Main footer grid */}
       <div
-        className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12"
+        className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
       >
         {/* Brand */}
         <div>
@@ -75,6 +80,47 @@ export default function Footer() {
           </p>
           <ul className="list-none m-0 p-0 flex flex-col gap-3">
             {FOOTER_LINKS.map((link) => (
+              <li key={link.label}>
+                <Link
+                  href={link.href}
+                  style={{
+                    fontFamily: "var(--font-ibm-plex-mono), monospace",
+                    fontSize: "12px",
+                    color: "rgba(255,255,255,0.75)",
+                    textDecoration: "none",
+                    letterSpacing: "0.04em",
+                    transition: "color 120ms",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--signal-pink)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "rgba(255,255,255,0.75)")
+                  }
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Legal links */}
+        <div>
+          <p
+            className="text-uppercase-dense"
+            style={{
+              fontFamily: "var(--font-ibm-plex-mono), monospace",
+              fontSize: "10px",
+              letterSpacing: "0.14em",
+              color: "var(--signal-pink)",
+              marginBottom: "1rem",
+            }}
+          >
+            Legal
+          </p>
+          <ul className="list-none m-0 p-0 flex flex-col gap-3">
+            {LEGAL_LINKS.map((link) => (
               <li key={link.label}>
                 <Link
                   href={link.href}

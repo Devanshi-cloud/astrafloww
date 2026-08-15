@@ -4,9 +4,24 @@ import SectionDivider from "@/components/section-divider";
 import PixelStar from "@/components/pixel-icon/star";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact Us",
   description:
-    "Get in touch with AstraFloww. Send us an inquiry and we'll respond within 24 hours.",
+    "Get in touch with AstraFloww. Book a strategy session for web development, SEO, AI automation, or brand systems. We respond within 24 hours.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact AstraFloww — Let's Build Something Together",
+    description:
+      "Ready to scale your digital presence? Send us a message and we'll be in touch within 24 hours.",
+    url: "/contact",
+    type: "website",
+  },
+  twitter: {
+    title: "Contact AstraFloww",
+    description:
+      "Let's Build Something Together. Reach out for web development, SEO, AI automation, and branding.",
+  },
 };
 
 export default function ContactPage() {
