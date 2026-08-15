@@ -137,4 +137,3 @@ For questions regarding these Terms, contact:
 **AstraFloww**
 Email: hello@astrafloww.in
 Address: Noida, Uttar Pradesh, India
-Phone/WhatsApp: +91 96546 02750

@@ -90,4 +90,3 @@ For questions or concerns regarding this Privacy Policy or your personal data, c
 **AstraFloww**
 Email: hello@astrafloww.in
 Address: Noida, Uttar Pradesh, India
-Phone/WhatsApp: +91 96546 02750
