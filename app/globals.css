@@ -1,26 +1,208 @@
 @import "tailwindcss";
 
+/* ==========================================
+   AstraFloww Design System — Color Tokens
+   ========================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #F2F2F0;
+  --ink: #111111;
+  --signal-pink: #F0299B;
+  --signal-green: #3DBE3D;
+  --cloud-white: #FFFFFF;
+  --grid-line: #DADAD8;
+
+  /* Typography scale */
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
+/* Tailwind v4 theme extension */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-signal-pink: var(--signal-pink);
+  --color-signal-green: var(--signal-green);
+  --color-cloud-white: var(--cloud-white);
+  --color-grid-line: var(--grid-line);
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ==========================================
+   Global Reset & Base
+   ========================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  /* Hard constraint from PRD: no border-radius anywhere */
+  border-radius: 0 !important;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ==========================================
+   Pixel Grid Background
+   Repeating 24px squares — "graph paper" feel
+   ========================================== */
+.pixel-grid-bg {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Pink section — no grid, just solid */
+.pink-section {
+  background-color: var(--signal-pink);
+  color: var(--cloud-white);
+}
+
+/* ==========================================
+   Typography Utilities
+   ========================================== */
+.font-display {
+  font-family: var(--font-display), 'Arial Black', sans-serif;
+  font-weight: 700;
+}
+
+.font-mono-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+}
+
+.text-uppercase-dense {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+/* Hero headline size — responsive clamp */
+.hero-headline {
+  font-family: var(--font-display), 'Arial Black', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* Section headline */
+.section-headline {
+  font-family: var(--font-display), 'Arial Black', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+/* Stat number */
+.stat-number {
+  font-family: var(--font-display), 'Arial Black', sans-serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  color: var(--ink);
+}
+
+/* ==========================================
+   Pixel Hard Shadow — blocky, no blur
+   ========================================== */
+.pixel-shadow {
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.pixel-shadow-pink {
+  box-shadow: 4px 4px 0 var(--signal-pink);
+}
+
+.pixel-shadow-white {
+  box-shadow: 4px 4px 0 var(--cloud-white);
+}
+
+/* ==========================================
+   Button Base
+   ========================================== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--signal-pink);
+  color: var(--cloud-white);
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.875rem 2rem;
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 80ms ease, box-shadow 80ms ease;
+}
+
+.btn-primary:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.btn-primary:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--ink);
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.75rem 1.75rem;
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 80ms ease, box-shadow 80ms ease;
+}
+
+.btn-outline:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* ==========================================
+   Reduced Motion
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

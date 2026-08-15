@@ -1,69 +1,467 @@
-import Image from "next/image";
+import Hero from "@/components/hero";
+import StatBlock from "@/components/stat-block";
+import ServiceCard from "@/components/service-card";
+import ClientShowcase from "@/components/client-showcase";
+import SectionDivider from "@/components/section-divider";
+import PixelFlower from "@/components/pixel-icon/flower";
+import PixelStar from "@/components/pixel-icon/star";
+import type { Metadata } from "next";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "AstraFloww Agency",
+  description:
+    "Bold digital agency offering web development, SEO, UI/UX design, AI development, and DevOps. We build brands that scale.",
+};
+
+// Service-for audience segments
+const AUDIENCE_SEGMENTS = [
+  {
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="2" y="2" width="8" height="8" fill="currentColor" />
+        <rect x="14" y="2" width="8" height="8" fill="currentColor" />
+        <rect x="2" y="14" width="8" height="8" fill="currentColor" />
+        <rect x="14" y="14" width="8" height="8" fill="currentColor" />
+      </svg>
+    ),
+    title: "Startups",
+    description: "Launch fast, look premium, and scale with confidence.",
+  },
+  {
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="4" y="14" width="16" height="6" fill="currentColor" />
+        <rect x="8" y="8" width="8" height="6" fill="currentColor" />
+        <rect x="10" y="4" width="4" height="4" fill="currentColor" />
+        <rect x="6" y="20" width="4" height="4" fill="currentColor" />
+        <rect x="14" y="20" width="4" height="4" fill="currentColor" />
+      </svg>
+    ),
+    title: "E-Commerce",
+    description: "Convert browsers into buyers with high-performance stores.",
+  },
+  {
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="10" y="2" width="4" height="4" fill="currentColor" />
+        <rect x="6" y="6" width="12" height="4" fill="currentColor" />
+        <rect x="4" y="10" width="16" height="8" fill="currentColor" />
+        <rect x="8" y="18" width="8" height="4" fill="currentColor" />
+      </svg>
+    ),
+    title: "Local Businesses",
+    description: "Dominate local search and grow your community presence.",
+  },
+  {
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="2" y="6" width="20" height="12" fill="currentColor" />
+        <rect x="6" y="2" width="12" height="4" fill="currentColor" />
+        <rect x="4" y="18" width="6" height="4" fill="currentColor" />
+        <rect x="14" y="18" width="6" height="4" fill="currentColor" />
+      </svg>
+    ),
+    title: "Enterprises",
+    description: "Scalable digital infrastructure for complex organisations.",
+  },
+];
+
+// Services we provide
+const SERVICES = [
+  {
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="14" fill="currentColor" />
+        <rect x="8" y="16" width="8" height="4" fill="currentColor" />
+        <rect x="4" y="20" width="16" height="2" fill="currentColor" />
+        <rect x="6" y="6" width="4" height="2" fill="white" />
+        <rect x="12" y="6" width="6" height="2" fill="white" />
+        <rect x="6" y="10" width="10" height="2" fill="white" />
+      </svg>
+    ),
+    title: "Web Development",
+    description:
+      "Fast, scalable websites and web apps built with modern frameworks. From landing pages to complex platforms.",
+  },
+  {
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="10" y="2" width="4" height="4" fill="currentColor" />
+        <rect x="6" y="6" width="12" height="4" fill="currentColor" />
+        <rect x="4" y="10" width="4" height="8" fill="currentColor" />
+        <rect x="16" y="10" width="4" height="8" fill="currentColor" />
+        <rect x="8" y="14" width="8" height="4" fill="currentColor" />
+        <rect x="10" y="18" width="4" height="4" fill="currentColor" />
+      </svg>
+    ),
+    title: "SEO",
+    description:
+      "Data-driven search optimisation. Rank higher, drive qualified traffic, and grow organic revenue.",
+  },
+  {
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="2" y="4" width="20" height="16" fill="currentColor" />
+        <rect x="6" y="8" width="12" height="8" fill="white" />
+        <rect x="8" y="10" width="8" height="4" fill="currentColor" />
+      </svg>
+    ),
+    title: "UI/UX Design",
+    description:
+      "Pixel-perfect interfaces that convert and delight. Research-backed, beautifully executed.",
+  },
+  {
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="8" y="2" width="8" height="4" fill="currentColor" />
+        <rect x="4" y="6" width="16" height="4" fill="currentColor" />
+        <rect x="2" y="10" width="20" height="6" fill="currentColor" />
+        <rect x="6" y="16" width="4" height="4" fill="currentColor" />
+        <rect x="14" y="16" width="4" height="4" fill="currentColor" />
+        <rect x="4" y="20" width="16" height="2" fill="currentColor" />
+      </svg>
+    ),
+    title: "AI Development",
+    description:
+      "Custom AI integrations, automation pipelines, and intelligent tooling that gives your team superpowers.",
+  },
+  {
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="2" y="8" width="20" height="8" fill="currentColor" />
+        <rect x="6" y="4" width="4" height="4" fill="currentColor" />
+        <rect x="14" y="4" width="4" height="4" fill="currentColor" />
+        <rect x="6" y="16" width="4" height="4" fill="currentColor" />
+        <rect x="14" y="16" width="4" height="4" fill="currentColor" />
+        <rect x="10" y="6" width="4" height="2" fill="white" />
+        <rect x="10" y="10" width="4" height="4" fill="white" />
+      </svg>
+    ),
+    title: "DevOps",
+    description:
+      "CI/CD pipelines, cloud infrastructure, and deployment automation. Ship faster with confidence.",
+  },
+];
+
+export default function LandingPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      {/* 1. Hero */}
+      <Hero />
+
+      {/* 2. Intro Blurb — pink full-bleed with jagged dividers */}
+      <SectionDivider
+        direction="down"
+        fill="var(--signal-pink)"
+        background="var(--paper)"
+      />
+      <section
+        className="pink-section"
+        style={{
+          padding: "4rem 1.5rem",
+          position: "relative",
+        }}
+      >
+        <div
+          className="max-w-4xl mx-auto"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "3rem",
+            justifyContent: "center",
+          }}
+        >
+          <PixelFlower
+            size={56}
+            color="rgba(255,255,255,0.3)"
+            centerColor="var(--cloud-white)"
+            className="hidden md:block flex-shrink-0"
+          />
+          <p
+            className="text-uppercase-dense"
+            style={{
+              fontFamily: "var(--font-space-grotesk), sans-serif",
+              fontSize: "clamp(0.9rem, 2vw, 1.2rem)",
+              lineHeight: 1.5,
+              color: "var(--cloud-white)",
+              letterSpacing: "0.06em",
+              textAlign: "center",
+              maxWidth: "640px",
+            }}
+          >
+            We are a digital marketing &amp; creative agency obsessed with
+            results. Bold ideas. Clean execution. Zero fluff.
           </p>
+          <PixelFlower
+            size={56}
+            color="rgba(255,255,255,0.3)"
+            centerColor="var(--cloud-white)"
+            className="hidden md:block flex-shrink-0"
+            style={{ transform: "rotate(45deg)" } as React.CSSProperties}
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </section>
+      <SectionDivider
+        direction="down"
+        fill="var(--paper)"
+        background="var(--signal-pink)"
+      />
+
+      {/* 3. Stats */}
+      <StatBlock />
+
+      {/* 4. Who We Are */}
+      <section
+        id="who-we-are"
+        className="pixel-grid-bg"
+        style={{
+          padding: "6rem 1.5rem",
+          borderTop: "2px solid var(--ink)",
+        }}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div
+            className="grid gap-12 items-start"
+            style={{ gridTemplateColumns: "1fr 1.4fr" }}
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div>
+              <p
+                style={{
+                  fontFamily: "var(--font-ibm-plex-mono), monospace",
+                  fontSize: "10px",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "var(--signal-pink)",
+                  marginBottom: "0.75rem",
+                }}
+              >
+                about us
+              </p>
+              <h2 className="section-headline" style={{ color: "var(--ink)" }}>
+                Who
+                <br />
+                We Are?
+              </h2>
+              <div
+                style={{
+                  width: "48px",
+                  height: "4px",
+                  backgroundColor: "var(--signal-pink)",
+                  marginTop: "1.5rem",
+                }}
+              />
+            </div>
+            <div
+              style={{
+                borderLeft: "3px solid var(--ink)",
+                paddingLeft: "2rem",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "var(--font-inter), sans-serif",
+                  fontSize: "14px",
+                  lineHeight: 1.8,
+                  color: "var(--ink)",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                AstraFloww is a digital marketing and creative agency built for
+                businesses that refuse to be average. We combine sharp strategy
+                with bold execution — from pixel-perfect interfaces to
+                AI-powered automation.
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-inter), sans-serif",
+                  fontSize: "14px",
+                  lineHeight: 1.8,
+                  color: "var(--ink)",
+                  opacity: 0.7,
+                }}
+              >
+                In 3+ years, we have delivered for clients across 10+ countries
+                — building brands, scaling products, and turning digital
+                presence into measurable growth.
+              </p>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* 5. Services For (audience segments) */}
+      <SectionDivider
+        direction="down"
+        fill="var(--signal-pink)"
+        background="var(--paper)"
+      />
+      <section
+        id="services-for"
+        className="pink-section"
+        style={{ padding: "5rem 1.5rem" }}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div style={{ marginBottom: "3rem", textAlign: "center" }}>
+            <p
+              style={{
+                fontFamily: "var(--font-ibm-plex-mono), monospace",
+                fontSize: "10px",
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.6)",
+                marginBottom: "0.75rem",
+              }}
+            >
+              we work with
+            </p>
+            <h2
+              className="section-headline"
+              style={{ color: "var(--cloud-white)" }}
+            >
+              Services For.
+            </h2>
+          </div>
+
+          <div
+            className="grid gap-6"
+            style={{
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            }}
+          >
+            {AUDIENCE_SEGMENTS.map((seg) => (
+              <ServiceCard
+                key={seg.title}
+                icon={
+                  <div style={{ color: "var(--cloud-white)" }}>{seg.icon}</div>
+                }
+                title={seg.title}
+                description={seg.description}
+                variant="paper"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      <SectionDivider
+        direction="down"
+        fill="var(--paper)"
+        background="var(--signal-pink)"
+      />
+
+      {/* 6. Client Showcase */}
+      <ClientShowcase />
+
+      {/* 7. Services We Provide */}
+      <section
+        id="services"
+        className="pixel-grid-bg"
+        style={{
+          padding: "6rem 1.5rem",
+          borderTop: "2px solid var(--ink)",
+        }}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div style={{ marginBottom: "3rem" }}>
+            <p
+              style={{
+                fontFamily: "var(--font-ibm-plex-mono), monospace",
+                fontSize: "10px",
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: "var(--signal-pink)",
+                marginBottom: "0.75rem",
+              }}
+            >
+              what we do
+            </p>
+            <h2 className="section-headline" style={{ color: "var(--ink)" }}>
+              Services We
+              <br />
+              Provide.
+            </h2>
+          </div>
+
+          <div
+            className="grid gap-6"
+            style={{
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            }}
+          >
+            {SERVICES.map((service) => (
+              <ServiceCard
+                key={service.title}
+                icon={
+                  <div style={{ color: "var(--cloud-white)" }}>
+                    {service.icon}
+                  </div>
+                }
+                title={service.title}
+                description={service.description}
+                variant="pink"
+                href="/contact"
+              />
+            ))}
+          </div>
+
+          {/* CTA below services */}
+          <div
+            style={{
+              marginTop: "3rem",
+              paddingTop: "3rem",
+              borderTop: "2px solid var(--grid-line)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "1.5rem",
+            }}
+          >
+            <div>
+              <p
+                style={{
+                  fontFamily: "var(--font-space-grotesk), sans-serif",
+                  fontWeight: 700,
+                  fontSize: "1.25rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.04em",
+                  color: "var(--ink)",
+                  margin: 0,
+                }}
+              >
+                Ready to start something?
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-inter), sans-serif",
+                  fontSize: "13px",
+                  color: "rgba(17,17,17,0.5)",
+                  marginTop: "0.25rem",
+                }}
+              >
+                Drop us a message — we respond within 24 hours.
+              </p>
+            </div>
+            <a href="/contact" className="btn-primary" id="services-cta">
+              Get In Touch &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Inline styles for grid column on smaller screens */}
+      <style>{`
+        @media (max-width: 768px) {
+          #who-we-are .grid {
+            grid-template-columns: 1fr !important;
+          }
+          #who-we-are .border-left-section {
+            border-left: none;
+            padding-left: 0;
+            border-top: 3px solid var(--ink);
+            padding-top: 2rem;
+          }
+        }
+      `}</style>
+    </>
   );
 }
