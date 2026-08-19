@@ -17,7 +17,7 @@ const LEGAL_LINKS = [
 const SOCIALS = [
   { label: "Instagram", href: "https://instagram.com/astrafloww" },
   { label: "LinkedIn", href: "https://linkedin.com/company/astrafloww" },
-  { label: "Twitter / X", href: "https://twitter.com/astrafloww" },
+  { label: "Twitter / X", href: "https://twitter.com/astraflow_" },
 ];
 
 export default function Footer() {

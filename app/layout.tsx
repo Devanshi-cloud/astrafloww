@@ -106,7 +106,7 @@ const jsonLd = {
       sameAs: [
         "https://instagram.com/astrafloww",
         "https://linkedin.com/company/astrafloww",
-        "https://twitter.com/astrafloww",
+        "https://twitter.com/astraflow_",
       ],
       email: "hello@astrafloww.in",
       description:
