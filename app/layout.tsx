@@ -6,6 +6,7 @@ import InitialLoader from "@/components/initial-loader";
 import CookieConsent from "@/components/CookieConsent";
 import SmoothScroll from "@/components/SmoothScroll";
 import AnalyticsGate from "@/components/AnalyticsGate";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -166,6 +167,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <CookieConsent />
           <AnalyticsGate />
         </SmoothScroll>
+        <SpeedInsights />
       </body>
     </html>
   );
