@@ -2,24 +2,58 @@ import nodemailer from "nodemailer";
 import type { ContactFormData } from "./validation";
 
 function createTransporter() {
+  const host = process.env.SMTP_HOST || "smtp-relay.brevo.com";
+  const port = Number(process.env.SMTP_PORT ?? 587);
+  const secure = process.env.SMTP_SECURE === "true" || port === 465;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS || process.env.BREVO_SMTP_KEY;
+
+  if (!user || !pass) {
+    throw new Error(
+      "Brevo SMTP credentials are not configured. Please set SMTP_USER and SMTP_PASS in your environment variables."
+    );
+  }
+
   return nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT ?? 587),
-    secure: process.env.SMTP_SECURE === "true", // true for port 465, false for 587
+    host,
+    port,
+    secure,
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      user,
+      pass,
     },
   });
 }
 
 export async function sendContactEmail(data: ContactFormData) {
   const to = process.env.CONTACT_EMAIL;
-  if (!to) throw new Error("CONTACT_EMAIL environment variable is not set");
+  if (!to) {
+    throw new Error("CONTACT_EMAIL environment variable is not set");
+  }
 
+  const fromAddress = process.env.SMTP_FROM || process.env.SMTP_USER;
+  if (!fromAddress) {
+    throw new Error("SMTP_FROM or SMTP_USER environment variable is not set");
+  }
+
+  const fromName = process.env.SMTP_FROM_NAME || "AstraFloww Contact";
   const { name, email, phone, service, preferredTime, message } = data;
 
   const subject = `[AstraFloww] New inquiry from ${name} — ${service}`;
+
+  const text = [
+    `New Contact Request from AstraFloww`,
+    `------------------------------------`,
+    `Name: ${name}`,
+    `Email: ${email}`,
+    phone ? `Phone: ${phone}` : null,
+    `Service Interested In: ${service}`,
+    preferredTime ? `Preferred Date / Time: ${preferredTime}` : null,
+    `\nMessage:\n${message}`,
+    `\n---\nSent via AstraFloww contact form (astrafloww.in)`,
+  ]
+    .filter(Boolean)
+    .join("\n");
 
   const html = `
     <!DOCTYPE html>
@@ -72,11 +106,19 @@ export async function sendContactEmail(data: ContactFormData) {
 
   const transporter = createTransporter();
 
+  // Use structured address objects for RFC-compliant header formatting
   await transporter.sendMail({
-    from: `"AstraFloww Contact" <${process.env.SMTP_USER}>`,
+    from: {
+      name: `${name} (via AstraFloww)`,
+      address: fromAddress,
+    },
     to,
-    replyTo: email,
+    replyTo: {
+      name: name,
+      address: email,
+    },
     subject,
+    text,
     html,
   });
 }
