@@ -58,8 +58,10 @@ export async function POST(request: NextRequest) {
       );
     }
     console.error("Contact form error:", err);
+    const errorMessage =
+      err instanceof Error ? err.message : "Failed to send message. Please try again.";
     return NextResponse.json(
-      { error: "Failed to send message. Please try again." },
+      { error: errorMessage },
       { status: 500 }
     );
   }
