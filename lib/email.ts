@@ -1,46 +1,71 @@
-import nodemailer from "nodemailer";
 import type { ContactFormData } from "./validation";
 
-function createTransporter() {
-  const host = process.env.SMTP_HOST || "smtp-relay.brevo.com";
-  const port = Number(process.env.SMTP_PORT ?? 587);
-  const secure = process.env.SMTP_SECURE === "true" || port === 465;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS || process.env.BREVO_SMTP_KEY;
+interface BrevoRecipient {
+  name?: string;
+  email: string;
+}
 
-  if (!user || !pass) {
-    throw new Error(
-      "Brevo SMTP credentials are not configured. Please set SMTP_USER and SMTP_PASS in your environment variables."
-    );
+interface SendBrevoPayload {
+  sender: BrevoRecipient;
+  to: BrevoRecipient[];
+  replyTo?: BrevoRecipient;
+  subject: string;
+  htmlContent: string;
+  textContent?: string;
+}
+
+async function sendBrevoEmail(payload: SendBrevoPayload, apiKey: string) {
+  const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      "content-type": "application/json",
+      "api-key": apiKey,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Brevo API error (${response.status}): ${errorText}`);
   }
 
-  return nodemailer.createTransport({
-    host,
-    port,
-    secure,
-    auth: {
-      user,
-      pass,
-    },
-  });
+  return response.json();
 }
 
 export async function sendContactEmail(data: ContactFormData) {
+  const apiKey =
+    process.env.BREVO_API_KEY ||
+    process.env.BREVO_SMTP_KEY ||
+    process.env.SMTP_PASS;
+
+  if (!apiKey) {
+    throw new Error(
+      "Brevo API key is not configured. Please set BREVO_API_KEY (or BREVO_SMTP_KEY / SMTP_PASS) in your environment variables."
+    );
+  }
+
   const to = process.env.CONTACT_EMAIL;
   if (!to) {
     throw new Error("CONTACT_EMAIL environment variable is not set");
   }
 
-  const fromAddress = process.env.SMTP_FROM || process.env.SMTP_USER;
+  const fromAddress =
+    process.env.SMTP_FROM ||
+    process.env.BREVO_FROM_EMAIL ||
+    process.env.SMTP_USER;
   if (!fromAddress) {
-    throw new Error("SMTP_FROM or SMTP_USER environment variable is not set");
+    throw new Error(
+      "Sender email is not configured. Please set SMTP_FROM (or BREVO_FROM_EMAIL / SMTP_USER) in your environment variables."
+    );
   }
 
-  const cleanFromName = (process.env.SMTP_FROM_NAME || "AstraFloww").replace(/["'\\]/g, "").trim() || "AstraFloww";
+  const cleanFromName =
+    (process.env.SMTP_FROM_NAME || process.env.BREVO_FROM_NAME || "AstraFloww")
+      .replace(/["'\\]/g, "")
+      .trim() || "AstraFloww";
   const cleanName = data.name.replace(/["'\\]/g, "").trim();
   const { email, phone, service, preferredTime, message } = data;
-
-  const transporter = createTransporter();
 
   // -------------------------------------------------------------
   // 1. Admin notification email (sent to AstraFloww team)
@@ -200,39 +225,52 @@ export async function sendContactEmail(data: ContactFormData) {
   `;
 
   // Send admin notification
-  const sendAdmin = transporter.sendMail({
-    from: {
-      name: `${cleanName} (via AstraFloww)`,
-      address: fromAddress,
+  const sendAdmin = sendBrevoEmail(
+    {
+      sender: {
+        name: `${cleanName} (via AstraFloww)`,
+        email: fromAddress,
+      },
+      to: [
+        {
+          name: "AstraFloww Team",
+          email: to,
+        },
+      ],
+      replyTo: {
+        name: cleanName,
+        email: email,
+      },
+      subject: adminSubject,
+      textContent: adminText,
+      htmlContent: adminHtml,
     },
-    to,
-    replyTo: {
-      name: cleanName,
-      address: email,
-    },
-    subject: adminSubject,
-    text: adminText,
-    html: adminHtml,
-  });
+    apiKey
+  );
 
   // Send client confirmation auto-reply
-  const sendClient = transporter.sendMail({
-    from: {
-      name: cleanFromName,
-      address: fromAddress,
+  const sendClient = sendBrevoEmail(
+    {
+      sender: {
+        name: cleanFromName,
+        email: fromAddress,
+      },
+      to: [
+        {
+          name: cleanName,
+          email: email,
+        },
+      ],
+      replyTo: {
+        name: cleanFromName,
+        email: to,
+      },
+      subject: clientSubject,
+      textContent: clientText,
+      htmlContent: clientHtml,
     },
-    to: {
-      name: cleanName,
-      address: email,
-    },
-    replyTo: {
-      name: cleanFromName,
-      address: to,
-    },
-    subject: clientSubject,
-    text: clientText,
-    html: clientHtml,
-  });
+    apiKey
+  );
 
   await Promise.all([sendAdmin, sendClient]);
 }
