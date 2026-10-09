@@ -206,7 +206,7 @@ export default function ContactPage() {
                 to you within 24 hours.
               </p>
               <a
-                href="mailto:hello@astrafloww.in"
+                href="mailto:contact@astrafloww.in"
                 id="contact-email-direct"
                 style={{
                   display: "inline-block",
@@ -218,7 +218,7 @@ export default function ContactPage() {
                   textUnderlineOffset: "3px",
                 }}
               >
-                hello@astrafloww.in →
+                contact@astrafloww.in →
               </a>
             </div>
           </div>
