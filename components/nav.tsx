@@ -18,7 +18,7 @@ export default function Nav() {
     <nav
       className="fixed top-0 left-0 right-0 z-50"
       style={{
-        backgroundColor: "rgba(242,242,240,0.92)",
+        backgroundColor: "rgba(244, 248, 252, 0.92)",
         backdropFilter: "blur(4px)",
         borderBottom: "1px solid var(--grid-line)",
       }}

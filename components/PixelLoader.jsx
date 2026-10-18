@@ -3,12 +3,13 @@
 import { useEffect, useState, useRef } from "react";
 
 const TOKENS = {
-  paper: "#F2F2F0",
-  ink: "#111111",
-  signalPink: "#F0299B",
-  signalGreen: "#3DBE3D",
+  paper: "#F4F8FC",
+  ink: "#0F041A",
+  signalPink: "#7C6DF6",
+  signalGreen: "#7C6DF6",
+  azureWhite: "#D1DCF9",
   cloudWhite: "#FFFFFF",
-  gridLine: "#DADAD8",
+  gridLine: "#D1DCF9",
 };
 
 const TOTAL_SEGMENTS = 12;
@@ -136,7 +137,7 @@ export default function PixelLoader({ label = "LOADING..." }) {
               className="font-mono text-xs font-semibold"
               style={{
                 fontFamily: "var(--font-ibm-plex-mono), monospace",
-                color: TOKENS.signalGreen,
+                color: TOKENS.azureWhite,
               }}
             >
               [{percent.toString().padStart(3, " ")}%]
@@ -145,7 +146,7 @@ export default function PixelLoader({ label = "LOADING..." }) {
 
           {/* 12-Segment Progress Bar */}
           <div
-            className="p-2 border-[2px] bg-[#1a1a1a]"
+            className="p-2 border-[2px] bg-[#180829]"
             style={{
               borderColor: TOKENS.gridLine,
             }}
@@ -159,13 +160,13 @@ export default function PixelLoader({ label = "LOADING..." }) {
                     className="h-full transition-colors duration-75"
                     style={{
                       backgroundColor: isActive
-                        ? TOKENS.signalGreen
-                        : "rgba(255, 255, 255, 0.08)",
+                        ? TOKENS.signalPink
+                        : "rgba(209, 220, 249, 0.08)",
                       border: isActive
-                        ? `1px solid ${TOKENS.cloudWhite}`
-                        : "1px solid rgba(255, 255, 255, 0.05)",
+                        ? `1px solid ${TOKENS.azureWhite}`
+                        : "1px solid rgba(209, 220, 249, 0.05)",
                       boxShadow: isActive
-                        ? `inset 0 0 0 1px ${TOKENS.signalGreen}`
+                        ? `inset 0 0 0 1px ${TOKENS.signalPink}`
                         : "none",
                     }}
                   />

@@ -4,12 +4,25 @@
    AstraFloww Design System — Color Tokens
    ========================================== */
 :root {
-  --paper: #F2F2F0;
-  --ink: #111111;
-  --signal-pink: #F0299B;
-  --signal-green: #3DBE3D;
-  --cloud-white: #FFFFFF;
-  --grid-line: #DADAD8;
+  /* New Color Palette */
+  --paper: #F4F8FC;        /* Alış Mavisi — Page background */
+  --ink: #0F041A;          /* Koyu Mor — Primary text, headlines, outlines, dark surfaces */
+  --signal-pink: #7C6DF6;  /* Parlak Lavanta — Primary accent, CTAs, highlight blocks */
+  --signal-green: #D1DCF9; /* Azur Beyazı — Secondary accent */
+  --cloud-white: #FFFFFF;  /* Crisp white card fills */
+  --grid-line: #D1DCF9;    /* Azur Beyazı — Pixel grid lines */
+
+  /* Palette Named Tokens */
+  --azur-beyazi: #D1DCF9;
+  --alis-mavisi: #F4F8FC;
+  --koyu-mor: #0F041A;
+  --parlak-lavanta: #7C6DF6;
+
+  /* Semantic Aliases */
+  --azure-white: var(--azur-beyazi);
+  --alice-blue: var(--alis-mavisi);
+  --dark-purple: var(--koyu-mor);
+  --bright-lavender: var(--parlak-lavanta);
 
   /* Typography scale */
   --font-display: var(--font-space-grotesk);
@@ -25,6 +38,14 @@
   --color-signal-green: var(--signal-green);
   --color-cloud-white: var(--cloud-white);
   --color-grid-line: var(--grid-line);
+  --color-azur-beyazi: var(--azur-beyazi);
+  --color-alis-mavisi: var(--alis-mavisi);
+  --color-koyu-mor: var(--koyu-mor);
+  --color-parlak-lavanta: var(--parlak-lavanta);
+  --color-azure-white: var(--azure-white);
+  --color-alice-blue: var(--alice-blue);
+  --color-dark-purple: var(--dark-purple);
+  --color-bright-lavender: var(--bright-lavender);
   --font-display: var(--font-space-grotesk);
   --font-body: var(--font-inter);
   --font-mono: var(--font-ibm-plex-mono);
@@ -68,8 +89,9 @@ body {
   background-size: 24px 24px;
 }
 
-/* Pink section — no grid, just solid */
-.pink-section {
+/* Lavender section (replaces pink) */
+.pink-section,
+.lavender-section {
   background-color: var(--signal-pink);
   color: var(--cloud-white);
 }
@@ -133,8 +155,13 @@ body {
   box-shadow: 4px 4px 0 var(--ink);
 }
 
-.pixel-shadow-pink {
+.pixel-shadow-pink,
+.pixel-shadow-lavender {
   box-shadow: 4px 4px 0 var(--signal-pink);
+}
+
+.pixel-shadow-azure {
+  box-shadow: 4px 4px 0 var(--azure-white);
 }
 
 .pixel-shadow-white {

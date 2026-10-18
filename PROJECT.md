@@ -24,16 +24,16 @@
 
 ### 2.1 Color tokens
 
-| Token | Hex | Use |
-|---|---|---|
-| `--paper` | `#F2F2F0` | Page background |
-| `--ink` | `#111111` | Primary text, headlines, outlines |
-| `--signal-pink` | `#F0299B` | Section blocks, CTAs, accents |
-| `--signal-green` | `#3DBE3D` | Pixel doodle accents (sparingly) |
-| `--cloud-white` | `#FFFFFF` | Card fills on pink sections |
-| `--grid-line` | `#DADAD8` | Faint background grid lines |
+| Token | Name | Hex | Use |
+|---|---|---|---|
+| `--paper` / `--alis-mavisi` | Alış Mavisi | `#F4F8FC` | Page background, canvas |
+| `--ink` / `--koyu-mor` | Koyu Mor | `#0F041A` | Primary text, headlines, outlines, dark blocks |
+| `--signal-pink` / `--parlak-lavanta` | Parlak Lavanta | `#7C6DF6` | Section blocks, CTAs, primary accents |
+| `--azure-white` / `--azur-beyazi` | Azur Beyazı | `#D1DCF9` | Secondary accents, grid lines, subtle cards |
+| `--grid-line` | Azur Beyazı | `#D1DCF9` | Background pixel grid lines |
+| `--cloud-white` | Cloud White | `#FFFFFF` | Card fills |
 
-Keep it to these six — no gradients, no soft shadows. Flat pixel-art logic throughout.
+Flat pixel-art logic with cohesive neo-brutalist styling.
 
 ### 2.2 Typography
 

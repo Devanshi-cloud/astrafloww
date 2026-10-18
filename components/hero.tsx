@@ -174,7 +174,7 @@ export default function Hero() {
             {/* Star accents */}
             <PixelStar
               size={12}
-              color="var(--signal-green)"
+              color="var(--azure-white)"
               className="absolute"
               style={{ top: "60px", right: "40px" } as React.CSSProperties}
             />

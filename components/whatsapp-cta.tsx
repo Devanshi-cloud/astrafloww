@@ -14,7 +14,7 @@ export default function WhatsAppCTA() {
   return (
     <div
       style={{
-        backgroundColor: "var(--signal-green)",
+        backgroundColor: "var(--azure-white)",
         border: "2px solid var(--ink)",
         padding: "2.5rem",
         boxShadow: hovered ? "2px 2px 0 var(--ink)" : "6px 6px 0 var(--ink)",
@@ -40,8 +40,8 @@ export default function WhatsAppCTA() {
         <rect x="4" y="8" width="32" height="20" fill="var(--ink)" />
         <rect x="8" y="32" width="4" height="4" fill="var(--ink)" />
         <rect x="12" y="36" width="16" height="4" fill="var(--ink)" />
-        <rect x="12" y="14" width="16" height="4" fill="var(--signal-green)" />
-        <rect x="12" y="20" width="10" height="4" fill="var(--signal-green)" />
+        <rect x="12" y="14" width="16" height="4" fill="var(--azure-white)" />
+        <rect x="12" y="20" width="10" height="4" fill="var(--azure-white)" />
       </svg>
 
       <div>

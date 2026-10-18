@@ -92,7 +92,7 @@ export default function ContactForm() {
     return (
       <div
         style={{
-          backgroundColor: "var(--signal-green)",
+          backgroundColor: "var(--azure-white)",
           border: "2px solid var(--ink)",
           padding: "3rem 2rem",
           boxShadow: "6px 6px 0 var(--ink)",
@@ -109,10 +109,10 @@ export default function ContactForm() {
           style={{ marginBottom: "1rem", imageRendering: "pixelated" }}
         >
           <rect x="4" y="4" width="40" height="40" fill="var(--ink)" />
-          <rect x="8" y="24" width="8" height="8" fill="var(--signal-green)" />
-          <rect x="16" y="32" width="8" height="8" fill="var(--signal-green)" />
-          <rect x="24" y="16" width="8" height="8" fill="var(--signal-green)" />
-          <rect x="32" y="8" width="8" height="8" fill="var(--signal-green)" />
+          <rect x="8" y="24" width="8" height="8" fill="var(--signal-pink)" />
+          <rect x="16" y="32" width="8" height="8" fill="var(--signal-pink)" />
+          <rect x="24" y="16" width="8" height="8" fill="var(--signal-pink)" />
+          <rect x="32" y="8" width="8" height="8" fill="var(--signal-pink)" />
         </svg>
         <p
           style={{
@@ -230,7 +230,7 @@ export default function ContactForm() {
               appearance: "none",
               cursor: "pointer",
               backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M0 0h4v4H0zM4 4h4v4H4z' fill='%23111111'/%3E%3C/svg%3E\")",
+                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M0 0h4v4H0zM4 4h4v4H4z' fill='%230F041A'/%3E%3C/svg%3E\")",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "right 12px center",
               paddingRight: "2.5rem",

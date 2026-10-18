@@ -48,12 +48,12 @@ export default function Spaceship({
       <rect x="44" y="52" width="8" height="8" fill={accentColor} />
       <rect x="56" y="52" width="8" height="8" fill={accentColor} />
       {/* Thrusters flame */}
-      <rect x="34" y="60" width="4" height="8" fill="#FFC107" />
-      <rect x="46" y="60" width="4" height="8" fill="#FFC107" />
-      <rect x="58" y="60" width="4" height="8" fill="#FFC107" />
-      <rect x="36" y="68" width="4" height="4" fill="#FF5722" />
-      <rect x="48" y="68" width="4" height="4" fill="#FF5722" />
-      <rect x="60" y="68" width="4" height="4" fill="#FF5722" />
+      <rect x="34" y="60" width="4" height="8" fill="var(--azure-white)" />
+      <rect x="46" y="60" width="4" height="8" fill="var(--azure-white)" />
+      <rect x="58" y="60" width="4" height="8" fill="var(--azure-white)" />
+      <rect x="36" y="68" width="4" height="4" fill={accentColor} />
+      <rect x="48" y="68" width="4" height="4" fill={accentColor} />
+      <rect x="60" y="68" width="4" height="4" fill={accentColor} />
       {/* Star accents */}
       <rect x="16" y="16" width="4" height="4" fill={accentColor} />
       <rect x="76" y="12" width="4" height="4" fill={accentColor} />

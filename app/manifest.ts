@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "We don't just market. We amplify. High-performance web development, AI automation, SEO, and brand systems.",
     start_url: "/",
     display: "standalone",
-    background_color: "#F2F2F0",
-    theme_color: "#F0299B",
+    background_color: "#F4F8FC",
+    theme_color: "#7C6DF6",
     icons: [
       {
         src: "/favicon.ico",

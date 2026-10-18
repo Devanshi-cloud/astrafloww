@@ -92,16 +92,16 @@ export function buildEmailTemplates(data: ContactFormData): EmailTemplates {
       <head>
         <meta charset="utf-8" />
         <style>
-          body { font-family: Arial, sans-serif; color: #111; background: #F2F2F0; margin: 0; padding: 0; }
-          .container { max-width: 600px; margin: 0 auto; background: #fff; border: 2px solid #111; }
-          .header { background: #F0299B; padding: 24px 32px; }
+          body { font-family: Arial, sans-serif; color: #0F041A; background: #F4F8FC; margin: 0; padding: 0; }
+          .container { max-width: 600px; margin: 0 auto; background: #fff; border: 2px solid #0F041A; }
+          .header { background: #7C6DF6; padding: 24px 32px; }
           .header h1 { color: #fff; font-size: 20px; margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
           .body { padding: 32px; }
           .field { margin-bottom: 20px; }
-          .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: #F0299B; font-weight: 700; margin-bottom: 4px; }
-          .value { font-size: 14px; color: #111; }
-          .message-box { background: #F2F2F0; border: 1px solid #DADAD8; padding: 16px; white-space: pre-wrap; }
-          .footer { border-top: 2px solid #111; padding: 16px 32px; background: #111; color: rgba(255,255,255,0.6); font-size: 11px; }
+          .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: #7C6DF6; font-weight: 700; margin-bottom: 4px; }
+          .value { font-size: 14px; color: #0F041A; }
+          .message-box { background: #F4F8FC; border: 1px solid #D1DCF9; padding: 16px; white-space: pre-wrap; }
+          .footer { border-top: 2px solid #0F041A; padding: 16px 32px; background: #0F041A; color: rgba(255,255,255,0.6); font-size: 11px; }
         </style>
       </head>
       <body>
@@ -163,19 +163,19 @@ export function buildEmailTemplates(data: ContactFormData): EmailTemplates {
       <head>
         <meta charset="utf-8" />
         <style>
-          body { font-family: Arial, sans-serif; color: #111; background: #F2F2F0; margin: 0; padding: 0; }
-          .container { max-width: 600px; margin: 0 auto; background: #fff; border: 2px solid #111; }
-          .header { background: #F0299B; padding: 24px 32px; }
+          body { font-family: Arial, sans-serif; color: #0F041A; background: #F4F8FC; margin: 0; padding: 0; }
+          .container { max-width: 600px; margin: 0 auto; background: #fff; border: 2px solid #0F041A; }
+          .header { background: #7C6DF6; padding: 24px 32px; }
           .header h1 { color: #fff; font-size: 20px; margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
-          .body { padding: 32px; font-size: 14px; line-height: 1.6; color: #111; }
+          .body { padding: 32px; font-size: 14px; line-height: 1.6; color: #0F041A; }
           .greeting { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
-          .summary-card { background: #F2F2F0; border: 1px solid #DADAD8; padding: 20px; margin: 24px 0; }
-          .summary-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: #F0299B; font-weight: 700; margin-bottom: 12px; }
+          .summary-card { background: #F4F8FC; border: 1px solid #D1DCF9; padding: 20px; margin: 24px 0; }
+          .summary-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: #7C6DF6; font-weight: 700; margin-bottom: 12px; }
           .field { margin-bottom: 10px; }
           .field-label { font-weight: 700; font-size: 12px; color: #555; }
-          .field-val { color: #111; margin-top: 2px; }
-          .footer { border-top: 2px solid #111; padding: 16px 32px; background: #111; color: rgba(255,255,255,0.7); font-size: 11px; }
-          .footer a { color: #F0299B; text-decoration: none; }
+          .field-val { color: #0F041A; margin-top: 2px; }
+          .footer { border-top: 2px solid #0F041A; padding: 16px 32px; background: #0F041A; color: rgba(255,255,255,0.7); font-size: 11px; }
+          .footer a { color: #7C6DF6; text-decoration: none; }
         </style>
       </head>
       <body>

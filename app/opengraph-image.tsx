@@ -17,13 +17,13 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          backgroundColor: "#F2F2F0",
+          backgroundColor: "#F4F8FC",
           backgroundImage:
-            "linear-gradient(#DADAD8 1px, transparent 1px), linear-gradient(90deg, #DADAD8 1px, transparent 1px)",
+            "linear-gradient(#D1DCF9 1px, transparent 1px), linear-gradient(90deg, #D1DCF9 1px, transparent 1px)",
           backgroundSize: "32px 32px",
           padding: "60px 80px",
           fontFamily: "sans-serif",
-          border: "16px solid #111111",
+          border: "16px solid #0F041A",
         }}
       >
         {/* Top bar */}
@@ -36,7 +36,7 @@ export default async function Image() {
         >
           <div
             style={{
-              backgroundColor: "#111111",
+              backgroundColor: "#0F041A",
               color: "#FFFFFF",
               padding: "8px 20px",
               fontSize: "22px",
@@ -50,15 +50,15 @@ export default async function Image() {
 
           <div
             style={{
-              backgroundColor: "#F0299B",
+              backgroundColor: "#7C6DF6",
               color: "#FFFFFF",
               padding: "6px 16px",
               fontSize: "14px",
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: "0.1em",
-              border: "2px solid #111111",
-              boxShadow: "4px 4px 0 #111111",
+              border: "2px solid #0F041A",
+              boxShadow: "4px 4px 0 #0F041A",
             }}
           >
             Digital Agency
@@ -81,18 +81,18 @@ export default async function Image() {
               fontWeight: 900,
               lineHeight: 1.05,
               textTransform: "uppercase",
-              color: "#111111",
+              color: "#0F041A",
               letterSpacing: "-0.02em",
             }}
           >
             <span>We don’t just market.</span>
-            <span style={{ color: "#F0299B" }}>We amplify.</span>
+            <span style={{ color: "#7C6DF6" }}>We amplify.</span>
           </div>
 
           <div
             style={{
               fontSize: "24px",
-              color: "#111111",
+              color: "#0F041A",
               opacity: 0.75,
               fontWeight: 500,
               maxWidth: "800px",
@@ -108,7 +108,7 @@ export default async function Image() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            borderTop: "3px solid #111111",
+            borderTop: "3px solid #0F041A",
             paddingTop: "24px",
           }}
         >
@@ -116,7 +116,7 @@ export default async function Image() {
             style={{
               fontSize: "18px",
               fontWeight: 700,
-              color: "#111111",
+              color: "#0F041A",
               letterSpacing: "0.08em",
               textTransform: "uppercase",
             }}
@@ -126,12 +126,12 @@ export default async function Image() {
 
           <div
             style={{
-              backgroundColor: "#3DBE3D",
-              color: "#111111",
+              backgroundColor: "#D1DCF9",
+              color: "#0F041A",
               padding: "6px 14px",
               fontSize: "14px",
               fontWeight: 800,
-              border: "2px solid #111111",
+              border: "2px solid #0F041A",
             }}
           >
             AVAILABLE WORLDWIDE
