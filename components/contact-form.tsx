@@ -57,270 +57,126 @@ export default function ContactForm() {
     }
   };
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    fontFamily: "var(--font-inter), sans-serif",
-    fontSize: "13px",
-    color: "var(--ink)",
-    backgroundColor: "var(--paper)",
-    border: "2px solid var(--ink)",
-    padding: "0.75rem 1rem",
-    outline: "none",
-    transition: "box-shadow 100ms",
-  };
-
-  const labelStyle: React.CSSProperties = {
-    display: "block",
-    fontFamily: "var(--font-ibm-plex-mono), monospace",
-    fontSize: "10px",
-    letterSpacing: "0.12em",
-    textTransform: "uppercase",
-    color: "var(--ink)",
-    marginBottom: "0.4rem",
-    fontWeight: 600,
-  };
-
-  const errorStyle: React.CSSProperties = {
-    fontFamily: "var(--font-ibm-plex-mono), monospace",
-    fontSize: "10px",
-    color: "var(--signal-pink)",
-    marginTop: "0.25rem",
-    letterSpacing: "0.04em",
-  };
-
-  if (submitState === "success") {
-    return (
-      <div
-        style={{
-          backgroundColor: "var(--azure-white)",
-          border: "2px solid var(--ink)",
-          padding: "3rem 2rem",
-          boxShadow: "6px 6px 0 var(--ink)",
-          textAlign: "center",
-        }}
-      >
-        {/* Pixel checkmark */}
-        <svg
-          width="48"
-          height="48"
-          viewBox="0 0 48 48"
-          fill="none"
-          aria-hidden="true"
-          style={{ marginBottom: "1rem", imageRendering: "pixelated" }}
-        >
-          <rect x="4" y="4" width="40" height="40" fill="var(--ink)" />
-          <rect x="8" y="24" width="8" height="8" fill="var(--signal-pink)" />
-          <rect x="16" y="32" width="8" height="8" fill="var(--signal-pink)" />
-          <rect x="24" y="16" width="8" height="8" fill="var(--signal-pink)" />
-          <rect x="32" y="8" width="8" height="8" fill="var(--signal-pink)" />
-        </svg>
-        <p
-          style={{
-            fontFamily: "var(--font-space-grotesk), sans-serif",
-            fontWeight: 700,
-            fontSize: "1.25rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.06em",
-            color: "var(--ink)",
-            marginBottom: "0.5rem",
-          }}
-        >
-          Message Sent!
-        </p>
-        <p
-          style={{
-            fontFamily: "var(--font-inter), sans-serif",
-            fontSize: "13px",
-            color: "rgba(17,17,17,0.7)",
-          }}
-        >
-          We&apos;ll be in touch within 24 hours.
-        </p>
-        <button
-          onClick={() => setSubmitState("idle")}
-          className="btn-outline"
-          style={{ marginTop: "1.5rem", fontSize: "11px" }}
-        >
-          Send Another
-        </button>
-      </div>
-    );
-  }
-
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      noValidate
-      style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}
-    >
-      {/* Honeypot - hidden from humans */}
-      <input
-        type="text"
-        tabIndex={-1}
-        aria-hidden="true"
-        autoComplete="off"
-        style={{ position: "absolute", left: "-9999px", opacity: 0 }}
-        {...register("website")}
-      />
-
-      {/* Name + Email row */}
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
+      {/* Name & Email Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="contact-name" style={labelStyle}>
-            Name *
+          <label className="block text-[11px] font-mono uppercase tracking-wider text-white/70 mb-1.5">
+            Your Name *
           </label>
           <input
-            id="contact-name"
-            type="text"
-            placeholder="Your name"
-            style={{
-              ...inputStyle,
-              boxShadow: errors.name ? "0 0 0 2px var(--signal-pink)" : "none",
-            }}
             {...register("name")}
+            type="text"
+            placeholder="John Doe"
+            className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[var(--signal-pink)] focus:ring-1 focus:ring-[var(--signal-pink)] transition-colors"
           />
           {errors.name && (
-            <p style={errorStyle}>{errors.name.message}</p>
+            <p className="mt-1 text-xs text-rose-400 font-mono">
+              {errors.name.message}
+            </p>
           )}
         </div>
+
         <div>
-          <label htmlFor="contact-email" style={labelStyle}>
-            Email *
+          <label className="block text-[11px] font-mono uppercase tracking-wider text-white/70 mb-1.5">
+            Email Address *
           </label>
           <input
-            id="contact-email"
-            type="email"
-            placeholder="you@example.com"
-            style={{
-              ...inputStyle,
-              boxShadow: errors.email
-                ? "0 0 0 2px var(--signal-pink)"
-                : "none",
-            }}
             {...register("email")}
+            type="email"
+            placeholder="john@company.com"
+            className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[var(--signal-pink)] focus:ring-1 focus:ring-[var(--signal-pink)] transition-colors"
           />
           {errors.email && (
-            <p style={errorStyle}>{errors.email.message}</p>
+            <p className="mt-1 text-xs text-rose-400 font-mono">
+              {errors.email.message}
+            </p>
           )}
         </div>
       </div>
 
-      {/* Phone + Service row */}
+      {/* Service & Phone Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="contact-phone" style={labelStyle}>
-            Phone (optional)
-          </label>
-          <input
-            id="contact-phone"
-            type="tel"
-            placeholder="+91 98765 43210"
-            style={inputStyle}
-            {...register("phone")}
-          />
-        </div>
-        <div>
-          <label htmlFor="contact-service" style={labelStyle}>
-            Service *
+          <label className="block text-[11px] font-mono uppercase tracking-wider text-white/70 mb-1.5">
+            Service Required *
           </label>
           <select
-            id="contact-service"
-            style={{
-              ...inputStyle,
-              appearance: "none",
-              cursor: "pointer",
-              backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M0 0h4v4H0zM4 4h4v4H4z' fill='%230F041A'/%3E%3C/svg%3E\")",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "right 12px center",
-              paddingRight: "2.5rem",
-              boxShadow: errors.service
-                ? "0 0 0 2px var(--signal-pink)"
-                : "none",
-            }}
             {...register("service")}
+            defaultValue=""
+            className="w-full px-4 py-3 rounded-xl bg-[#140824] border border-white/10 text-white text-sm focus:outline-none focus:border-[var(--signal-pink)] focus:ring-1 focus:ring-[var(--signal-pink)] transition-colors"
           >
-            <option value="">Select a service</option>
+            <option value="" disabled className="text-white/40">
+              Select capability...
+            </option>
             {SERVICES.map((s) => (
-              <option key={s} value={s}>
+              <option key={s} value={s} className="bg-[#0F041A] text-white">
                 {s}
               </option>
             ))}
           </select>
           {errors.service && (
-            <p style={errorStyle}>{errors.service.message}</p>
+            <p className="mt-1 text-xs text-rose-400 font-mono">
+              {errors.service.message}
+            </p>
           )}
         </div>
-      </div>
 
-      {/* Preferred time */}
-      <div>
-        <label htmlFor="contact-time" style={labelStyle}>
-          Preferred Date / Time (optional)
-        </label>
-        <input
-          id="contact-time"
-          type="text"
-          placeholder="e.g. Weekdays after 6pm IST"
-          style={inputStyle}
-          {...register("preferredTime")}
-        />
+        <div>
+          <label className="block text-[11px] font-mono uppercase tracking-wider text-white/70 mb-1.5">
+            Phone / WhatsApp (Optional)
+          </label>
+          <input
+            {...register("phone")}
+            type="tel"
+            placeholder="+1 (555) 000-0000"
+            className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[var(--signal-pink)] focus:ring-1 focus:ring-[var(--signal-pink)] transition-colors"
+          />
+        </div>
       </div>
 
       {/* Message */}
       <div>
-        <label htmlFor="contact-message" style={labelStyle}>
-          Message *
+        <label className="block text-[11px] font-mono uppercase tracking-wider text-white/70 mb-1.5">
+          Project Brief / Message *
         </label>
         <textarea
-          id="contact-message"
-          rows={5}
-          placeholder="Tell us about your project..."
-          style={{
-            ...inputStyle,
-            resize: "vertical",
-            boxShadow: errors.message
-              ? "0 0 0 2px var(--signal-pink)"
-              : "none",
-          }}
           {...register("message")}
+          rows={4}
+          placeholder="Tell us about your goals, current bottlenecks, and target timeline..."
+          className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[var(--signal-pink)] focus:ring-1 focus:ring-[var(--signal-pink)] transition-colors resize-none"
         />
         {errors.message && (
-          <p style={errorStyle}>{errors.message.message}</p>
+          <p className="mt-1 text-xs text-rose-400 font-mono">
+            {errors.message.message}
+          </p>
         )}
       </div>
 
-      {/* Error toast */}
-      {submitState === "error" && (
-        <div
-          role="alert"
-          style={{
-            backgroundColor: "var(--signal-pink)",
-            color: "var(--cloud-white)",
-            border: "2px solid var(--ink)",
-            padding: "0.75rem 1rem",
-            fontFamily: "var(--font-ibm-plex-mono), monospace",
-            fontSize: "11px",
-            letterSpacing: "0.04em",
-            boxShadow: "4px 4px 0 var(--ink)",
-          }}
-        >
-          ✗ {errorMessage}
+      {/* Feedback States */}
+      {submitState === "success" && (
+        <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono">
+          ✓ Inquiry received. An AstraFloww partner will review and respond within 24 hours.
         </div>
       )}
 
-      {/* Submit */}
+      {submitState === "error" && (
+        <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono">
+          ✕ {errorMessage || "Could not submit inquiry. Please email us directly."}
+        </div>
+      )}
+
+      {/* Submit Button */}
       <button
         type="submit"
-        id="contact-submit-button"
-        className="btn-primary w-full sm:w-auto text-center justify-center"
         disabled={submitState === "loading"}
-        style={{
-          opacity: submitState === "loading" ? 0.7 : 1,
-          cursor: submitState === "loading" ? "not-allowed" : "pointer",
-        }}
+        className="w-full py-3.5 px-6 rounded-full bg-[var(--signal-pink)] text-white text-xs font-mono uppercase tracking-wider font-semibold transition-all hover:bg-[#6c5ce7] shadow-lg flex items-center justify-center gap-3 cursor-pointer disabled:opacity-50"
       >
-        {submitState === "loading" ? "Sending..." : "Send Message →"}
+        <span>
+          {submitState === "loading" ? "Transmitting Inquiry..." : "Send Project Inquiry"}
+        </span>
+        <span className="text-base">&rarr;</span>
       </button>
     </form>
   );

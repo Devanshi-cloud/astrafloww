@@ -1,221 +1,100 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
-import Spaceship from "@/components/pixel-icon/spaceship";
-import PixelCloud from "@/components/pixel-icon/cloud";
-import PixelStar from "@/components/pixel-icon/star";
-import { trackEvent } from "@/lib/analytics";
+import Image from "next/image";
+
 
 export default function Hero() {
   return (
-    <section
-      id="hero"
-      className="pixel-grid-bg relative overflow-hidden"
-      style={{
-        minHeight: "100vh",
-        paddingTop: "60px", // nav height
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full py-12 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-          {/* Left: Text */}
-          <div>
-            {/* Eyebrow */}
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
+    <section className="w-full bg-[var(--paper)] pt-6 sm:pt-10 pb-16 px-3 sm:px-6 md:px-8 lg:px-10 overflow-hidden">
+      <div className="max-w-[1640px] mx-auto">
+        {/* 1. Header Grid with Headline & Subtitle */}
+        <div className="relative pl-8 sm:pl-12 md:pl-16 mb-2 sm:mb-4">
+          {/* Vertical Scroll Down Indicator in strict brand lavender token */}
+          <div className="absolute left-0 top-2 flex flex-col items-center gap-3 select-none">
+            <span
+              className="text-[11px] font-mono font-medium text-[var(--signal-pink)] tracking-wider whitespace-nowrap uppercase"
               style={{
-                fontFamily: "var(--font-ibm-plex-mono), monospace",
-                fontSize: "11px",
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                color: "var(--signal-pink)",
-                marginBottom: "1.5rem",
-                display: "flex",
-                alignItems: "center",
-                flexWrap: "wrap",
-                gap: "0.5rem",
+                writingMode: "vertical-rl",
+                transform: "rotate(180deg)",
               }}
             >
-              <span
-                style={{
-                  display: "inline-block",
-                  width: "24px",
-                  height: "2px",
-                  backgroundColor: "var(--signal-pink)",
-                }}
+              Scroll Down
+            </span>
+            <div className="w-[1px] h-8 bg-[var(--signal-pink)]/50" />
+            <svg
+              width="10"
+              height="14"
+              viewBox="0 0 10 14"
+              fill="none"
+              className="text-[var(--signal-pink)]"
+            >
+              <path
+                d="M5 1V13M5 13L1 9M5 13L9 9"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
-              We don’t just market. We amplify.
-            </motion.p>
-
-            {/* Headline */}
-            <motion.h1
-              className="hero-headline"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              style={{
-                color: "var(--ink)",
-                marginBottom: "1.5rem",
-              }}
-            >
-              We Build
-              <br />
-              <span style={{ color: "var(--signal-pink)" }}>Brands</span> That
-              <br />
-              Actually Flow.
-            </motion.h1>
-
-            {/* Subheadline */}
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.35 }}
-              style={{
-                fontFamily: "var(--font-inter), sans-serif",
-                fontSize: "14px",
-                lineHeight: 1.7,
-                color: "var(--ink)",
-                opacity: 0.7,
-                maxWidth: "420px",
-                marginBottom: "2.5rem",
-              }}
-            >
-              From web development to AI-powered solutions — we craft digital
-              experiences that convert, scale, and impress.
-            </motion.p>
-
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.45 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <Link
-                href="/contact"
-                className="btn-primary justify-center text-center w-full sm:w-auto"
-                id="hero-cta-primary"
-                onClick={() =>
-                  trackEvent("cta_click", {
-                    location: "hero",
-                    label: "Let's Start!",
-                  })
-                }
-              >
-                Let&apos;s Start! &rarr;
-              </Link>
-              <a href="#work" className="btn-outline justify-center text-center w-full sm:w-auto" id="hero-cta-secondary">
-                View Work
-              </a>
-            </motion.div>
+            </svg>
           </div>
 
-          {/* Right: Mascot + doodles */}
-          <motion.div
-            className="hidden md:flex"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            style={{
-              position: "relative",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "420px",
-            }}
-          >
-            {/* Background pink block */}
-            <div
-              style={{
-                position: "absolute",
-                width: "280px",
-                height: "280px",
-                backgroundColor: "var(--signal-pink)",
-                border: "3px solid var(--ink)",
-                right: "0",
-                top: "50%",
-                transform: "translateY(-50%)",
-              }}
-            />
+          {/* Headline + Inline Button */}
+          <div>
+            <div className="flex flex-wrap items-baseline gap-x-5 sm:gap-x-7 gap-y-3">
+              <h1 className="hero-display text-[var(--ink)] leading-none uppercase">
+                WE COMPLETE
+              </h1>
 
-            {/* Spaceship — floating animation */}
-            <motion.div
-              animate={{ y: [0, -12, 0] }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              style={{ position: "relative", zIndex: 2 }}
-            >
-              <Spaceship size={180} color="var(--ink)" accentColor="var(--cloud-white)" />
-            </motion.div>
+              {/* Inline LET'S TALK NOW button in strict palette */}
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-3 pl-1.5 pr-4 py-1.5 rounded-full border border-[var(--signal-pink)] text-[var(--signal-pink)] hover:bg-[var(--signal-pink)] hover:text-white transition-all shadow-sm"
+              >
+                <div className="w-8 h-8 rounded-full bg-[var(--signal-pink)] text-white flex items-center justify-center transition-transform group-hover:scale-105">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </div>
+                <span className="font-mono font-bold text-xs uppercase tracking-wider">
+                  LET&apos;S TALK NOW
+                </span>
+              </Link>
+            </div>
 
-            {/* Cloud doodles */}
-            <motion.div
-              style={{ position: "absolute", top: "20px", left: "10px", zIndex: 1 }}
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            >
-              <PixelCloud size={56} color="var(--ink)" />
-            </motion.div>
-            <motion.div
-              style={{ position: "absolute", bottom: "30px", right: "20px", zIndex: 3 }}
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            >
-              <PixelCloud size={40} color="var(--cloud-white)" />
-            </motion.div>
+            <h1 className="hero-display text-[var(--ink)] leading-none uppercase mt-1 sm:mt-2">
+              YOUR SOFTWARE IDEAS
+            </h1>
+          </div>
 
-            {/* Star accents */}
-            <PixelStar
-              size={12}
-              color="var(--azure-white)"
-              className="absolute"
-              style={{ top: "60px", right: "40px" } as React.CSSProperties}
-            />
-            <PixelStar
-              size={8}
-              color="var(--ink)"
-              className="absolute"
-              style={{ bottom: "80px", left: "40px" } as React.CSSProperties}
-            />
-            <PixelStar
-              size={16}
-              color="var(--signal-pink)"
-              className="absolute"
-              style={{ top: "100px", left: "20px" } as React.CSSProperties}
-            />
-          </motion.div>
+          {/* Right-aligned Subtitle Copy */}
+          <div className="mt-4 sm:mt-6 flex justify-end">
+            <p className="max-w-md text-xs sm:text-sm md:text-base text-[var(--ink-muted)] leading-relaxed font-sans text-left">
+              AstraFloww is a visionary freelance software agency that breathes life into ideas and transforms them into extraordinary digital realities.
+            </p>
+          </div>
         </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2"
-          style={{ transform: "translateX(-50%)" }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-        >
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            style={{
-              fontFamily: "var(--font-ibm-plex-mono), monospace",
-              fontSize: "10px",
-              letterSpacing: "0.12em",
-              color: "var(--ink)",
-              opacity: 0.4,
-              textTransform: "lowercase",
-            }}
-          >
-            scroll ↓
-          </motion.div>
-        </motion.div>
+        {/* 2. Building Image — Wide with Rounded Corners (Zero Border, Zero Stroke) */}
+        <div className="relative w-full aspect-[2560/920] -mt-2 sm:-mt-6 md:-mt-10 lg:-mt-14 z-10 rounded-[20px] sm:rounded-[32px] md:rounded-[40px] overflow-hidden">
+          <Image
+            src="/images/hero-building-tight.png"
+            alt="AstraFloww Freelance Software Agency"
+            fill
+            priority
+            className="object-cover object-bottom"
+          />
+        </div>
       </div>
     </section>
   );

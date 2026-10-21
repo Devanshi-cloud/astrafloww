@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/contact-form";
-import SectionDivider from "@/components/section-divider";
-import PixelStar from "@/components/pixel-icon/star";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -25,205 +23,107 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const whatsappUrl =
+    "https://wa.me/919999999999?text=" +
+    encodeURIComponent(
+      "Hi AstraFloww team, I would like to discuss a project for my business."
+    );
+
   return (
-    <>
-      {/* Hero header */}
-      <section
-        className="pink-section pt-24 md:pt-32 pb-0 px-4 sm:px-6 relative overflow-hidden"
-      >
-        <div className="max-w-7xl mx-auto">
-          <p
-            style={{
-              fontFamily: "var(--font-ibm-plex-mono), monospace",
-              fontSize: "10px",
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.6)",
-              marginBottom: "1rem",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.5rem",
-            }}
-          >
-            <PixelStar size={8} color="rgba(255,255,255,0.6)" />
-            reach out
-          </p>
-          <h1
-            className="hero-headline"
-            style={{
-              color: "var(--cloud-white)",
-              marginBottom: "3rem",
-              maxWidth: "700px",
-            }}
-          >
+    <div className="pt-28 sm:pt-36 pb-20 md:pb-32 px-4 sm:px-6 bg-[var(--paper)]">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-14 max-w-3xl">
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--signal-pink)] mb-3 block">
+            // DIRECT COLLABORATION
+          </span>
+          <h1 className="hero-display text-[var(--ink)] mb-6">
             Let&apos;s Build
             <br />
-            Something
-            <br />
-            Together.
+            <span className="font-serif italic font-normal text-[var(--signal-pink)]">
+              Something Extraordinary.
+            </span>
           </h1>
+          <p className="text-base sm:text-lg text-[var(--ink-muted)] leading-relaxed font-sans">
+            Ready to scale your brand? Drop us your inquiry below or reach out via our direct communication channels. We review every brief and respond within 24 hours.
+          </p>
         </div>
-        <SectionDivider
-          direction="down"
-          fill="var(--paper)"
-          background="var(--signal-pink)"
-        />
-      </section>
 
-      {/* Main content */}
-      <section
-        className="pixel-grid-bg py-12 md:py-20 px-4 sm:px-6"
-      >
-        <div
-          className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10 md:gap-12 items-start"
-        >
-          {/* Left: Form */}
-          <div>
-            <div style={{ marginBottom: "2.5rem" }}>
-              <p
-                style={{
-                  fontFamily: "var(--font-ibm-plex-mono), monospace",
-                  fontSize: "10px",
-                  letterSpacing: "0.14em",
-                  textTransform: "uppercase",
-                  color: "var(--signal-pink)",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                send us a message
-              </p>
-              <h2
-                style={{
-                  fontFamily: "var(--font-space-grotesk), sans-serif",
-                  fontWeight: 700,
-                  fontSize: "1.75rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.02em",
-                  color: "var(--ink)",
-                  margin: 0,
-                }}
-              >
-                Book a Session
+        {/* 2-Column Contact Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-10 lg:gap-14 items-start">
+          {/* Left: Form in modern dark container */}
+          <div className="p-8 sm:p-10 rounded-3xl bg-[#0F041A] text-white shadow-2xl border border-white/10">
+            <div className="mb-6">
+              <span className="font-mono text-xs uppercase tracking-widest text-[var(--signal-pink)] block mb-1">
+                INQUIRY FORM
+              </span>
+              <h2 className="font-display font-bold text-2xl text-white">
+                Book a Strategy Session
               </h2>
             </div>
             <ContactForm />
           </div>
 
-          {/* Right: info */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            {/* Quick info block */}
-            <div
-              style={{
-                border: "2px solid var(--ink)",
-                padding: "1.5rem",
-                backgroundColor: "var(--cloud-white)",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "var(--font-ibm-plex-mono), monospace",
-                  fontSize: "10px",
-                  letterSpacing: "0.14em",
-                  textTransform: "uppercase",
-                  color: "var(--signal-pink)",
-                  marginBottom: "1rem",
-                }}
-              >
-                quick info
-              </p>
-              {[
-                { label: "Response time", value: "Within 24 hours" },
-                { label: "Working hours", value: "Mon–Sat, 10am–7pm IST" },
-                { label: "Based in", value: "India · Serving worldwide" },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    padding: "0.625rem 0",
-                    borderBottom: "1px solid var(--grid-line)",
-                    gap: "1rem",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-ibm-plex-mono), monospace",
-                      fontSize: "10px",
-                      letterSpacing: "0.06em",
-                      color: "rgba(17,17,17,0.5)",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {item.label}
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-inter), sans-serif",
-                      fontSize: "12px",
-                      color: "var(--ink)",
-                      fontWeight: 600,
-                      textAlign: "right",
-                    }}
-                  >
-                    {item.value}
-                  </span>
+          {/* Right: Info Cards */}
+          <div className="space-y-6">
+            {/* Quick Info Block */}
+            <div className="p-6 rounded-3xl bg-[var(--cloud-white)] border border-[var(--azure-white)] card-shadow">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-[var(--signal-pink)] font-semibold block mb-4">
+                Operations &amp; Timing
+              </span>
+
+              <div className="space-y-4 text-xs font-mono">
+                <div className="flex items-center justify-between py-2 border-b border-[var(--azure-white)]/60">
+                  <span className="text-[var(--ink)]/50">RESPONSE SLA</span>
+                  <span className="font-semibold text-[var(--ink)]">Within 24 Hours</span>
                 </div>
-              ))}
+                <div className="flex items-center justify-between py-2 border-b border-[var(--azure-white)]/60">
+                  <span className="text-[var(--ink)]/50">WORKING HOURS</span>
+                  <span className="font-semibold text-[var(--ink)]">Mon–Sat, 10am–7pm IST</span>
+                </div>
+                <div className="flex items-center justify-between py-2 border-b border-[var(--azure-white)]/60">
+                  <span className="text-[var(--ink)]/50">LOCATION</span>
+                  <span className="font-semibold text-[var(--ink)]">India · Global Clients</span>
+                </div>
+                <div className="flex items-center justify-between py-2">
+                  <span className="text-[var(--ink)]/50">ACTIVE ENGAGEMENTS</span>
+                  <span className="font-semibold text-emerald-600">● Open for Q2–Q3</span>
+                </div>
+              </div>
             </div>
 
-            {/* Email contact block */}
-            <div
-              style={{
-                border: "2px solid var(--ink)",
-                padding: "1.5rem",
-                backgroundColor: "var(--ink)",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "var(--font-ibm-plex-mono), monospace",
-                  fontSize: "10px",
-                  letterSpacing: "0.14em",
-                  textTransform: "uppercase",
-                  color: "var(--signal-pink)",
-                  marginBottom: "0.75rem",
-                }}
-              >
-                email us directly
-              </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-inter), sans-serif",
-                  fontSize: "13px",
-                  color: "rgba(255,255,255,0.7)",
-                  lineHeight: 1.6,
-                  marginBottom: "1.25rem",
-                }}
-              >
-                Prefer to email directly? Drop us a line and we&apos;ll get back
-                to you within 24 hours.
-              </p>
-              <a
-                href="mailto:contact@astrafloww.in"
-                id="contact-email-direct"
-                style={{
-                  display: "inline-block",
-                  fontFamily: "var(--font-ibm-plex-mono), monospace",
-                  fontSize: "12px",
-                  letterSpacing: "0.06em",
-                  color: "var(--cloud-white)",
-                  textDecoration: "underline",
-                  textUnderlineOffset: "3px",
-                }}
-              >
-                contact@astrafloww.in →
-              </a>
+            {/* Direct Channels */}
+            <div className="p-6 rounded-3xl bg-[var(--cloud-white)] border border-[var(--azure-white)] card-shadow space-y-4">
+              <div>
+                <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--signal-pink)] block mb-1">
+                  DIRECT EMAIL
+                </span>
+                <a
+                  href="mailto:contact@astrafloww.in"
+                  className="font-display font-bold text-base text-[var(--ink)] hover:text-[var(--signal-pink)] transition-colors"
+                >
+                  contact@astrafloww.in &rarr;
+                </a>
+              </div>
+
+              <div className="pt-4 border-t border-[var(--azure-white)]/60">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--signal-pink)] block mb-1">
+                  INSTANT MESSAGING
+                </span>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-mono font-semibold text-emerald-600 hover:text-emerald-700 transition-colors"
+                >
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  Chat on WhatsApp &rarr;
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }
