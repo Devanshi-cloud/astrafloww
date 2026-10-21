@@ -2,171 +2,135 @@
 
 import { useState } from "react";
 import Link from "next/link";
-
-const NAV_LINKS = [
-  { label: "Services", href: "/#services" },
-  { label: "Who We Are", href: "/#who-we-are" },
-  { label: "Services For", href: "/#services-for" },
-  { label: "Work", href: "/#work" },
-  { label: "Contact", href: "/contact" },
-];
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50"
-      style={{
-        backgroundColor: "rgba(244, 248, 252, 0.92)",
-        backdropFilter: "blur(4px)",
-        borderBottom: "1px solid var(--grid-line)",
-      }}
-    >
-      <div
-        className="max-w-7xl mx-auto px-6 flex items-center justify-between"
-        style={{ height: "60px" }}
-      >
-        {/* Wordmark */}
-        <Link
-          href="/"
-          className="font-display text-ink no-underline"
-          style={{
-            fontFamily: "var(--font-space-grotesk), sans-serif",
-            fontWeight: 700,
-            fontSize: "1.25rem",
-            letterSpacing: "-0.02em",
-            textTransform: "lowercase",
-            color: "var(--ink)",
-          }}
-        >
-          astrafloww
+    <header className="w-full bg-[var(--paper)] py-6 px-6 sm:px-12 md:px-16 select-none border-b border-[var(--azure-white)]/60">
+      <div className="max-w-[1440px] mx-auto flex items-center justify-between">
+        {/* Minimal geometric logo icon */}
+        <Link href="/" className="flex items-center gap-3 no-underline group">
+          <div className="w-7 h-7 flex items-center justify-center">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              className="text-[var(--ink)] transition-transform group-hover:scale-105"
+            >
+              <polygon points="4 2 20 12 4 22 8 12" fill="currentColor" />
+            </svg>
+          </div>
+          <span className="font-display font-bold text-lg tracking-tight text-[var(--ink)] hidden sm:inline">
+            astrafloww<span className="text-[var(--signal-pink)]">.</span>
+          </span>
         </Link>
 
-        {/* Desktop nav links */}
-        <ul
-          className="hidden md:flex items-center gap-8 list-none m-0 p-0"
-          style={{ fontFamily: "var(--font-ibm-plex-mono), monospace" }}
-        >
-          {NAV_LINKS.map((link) => (
-            <li key={link.label}>
-              <Link
-                href={link.href}
-                style={{
-                  fontFamily: "var(--font-ibm-plex-mono), monospace",
-                  fontSize: "11px",
-                  fontWeight: 500,
-                  letterSpacing: "0.06em",
-                  textTransform: "lowercase",
-                  color: "var(--ink)",
-                  textDecoration: "none",
-                  transition: "color 120ms",
-                }}
-                className="hover:text-signal-pink"
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "var(--signal-pink)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "var(--ink)")
-                }
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-          <li>
+        {/* Right side navigation links and Contact button */}
+        <div className="hidden md:flex items-center gap-10">
+          <nav className="flex items-center gap-8 text-[13px] font-mono uppercase tracking-wider text-[var(--ink)]/75">
             <Link
-              href="/contact"
-              className="btn-primary"
-              style={{ fontSize: "11px", padding: "0.5rem 1.25rem" }}
+              href="#projects"
+              className="hover:text-[var(--signal-pink)] transition-colors"
             >
-              Let&apos;s Talk
+              Project
             </Link>
-          </li>
-        </ul>
+            <Link
+              href="#about"
+              className="hover:text-[var(--signal-pink)] transition-colors"
+            >
+              About
+            </Link>
+            <Link
+              href="#services"
+              className="hover:text-[var(--signal-pink)] transition-colors"
+            >
+              Service
+            </Link>
+            <Link
+              href="#contact"
+              className="hover:text-[var(--signal-pink)] transition-colors"
+            >
+              Contact
+            </Link>
+          </nav>
 
-        {/* Mobile hamburger */}
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[var(--signal-pink)] text-[var(--cloud-white)] text-[13px] font-mono uppercase tracking-wider font-semibold hover:bg-[#6c5ce7] transition-all shadow-sm"
+          >
+            <span>Contact</span>
+            <span className="text-sm">&rarr;</span>
+          </Link>
+        </div>
+
+        {/* Mobile menu button */}
         <button
-          className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 cursor-pointer bg-transparent border-0 p-1"
           onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
+          className="md:hidden w-9 h-9 rounded-full flex flex-col items-center justify-center gap-1.5 focus:outline-none"
+          aria-label="Toggle navigation"
         >
           <span
-            style={{
-              display: "block",
-              width: "22px",
-              height: "2px",
-              backgroundColor: "var(--ink)",
-              transition: "transform 200ms",
-              transform: open ? "rotate(45deg) translate(3px, 3px)" : "none",
-            }}
+            className={`w-5 h-0.5 bg-[var(--ink)] transition-transform ${
+              open ? "rotate-45 translate-y-2" : ""
+            }`}
           />
           <span
-            style={{
-              display: "block",
-              width: "22px",
-              height: "2px",
-              backgroundColor: "var(--ink)",
-              transition: "opacity 200ms",
-              opacity: open ? 0 : 1,
-            }}
+            className={`w-5 h-0.5 bg-[var(--ink)] transition-opacity ${
+              open ? "opacity-0" : ""
+            }`}
           />
           <span
-            style={{
-              display: "block",
-              width: "22px",
-              height: "2px",
-              backgroundColor: "var(--ink)",
-              transition: "transform 200ms",
-              transform: open ? "rotate(-45deg) translate(3px, -3px)" : "none",
-            }}
+            className={`w-5 h-0.5 bg-[var(--ink)] transition-transform ${
+              open ? "-rotate-45 -translate-y-2" : ""
+            }`}
           />
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
-        <div
-          className="md:hidden px-6 py-6"
-          style={{
-            backgroundColor: "var(--paper)",
-            borderTop: "1px solid var(--grid-line)",
-          }}
-        >
-          <ul className="list-none m-0 p-0 flex flex-col gap-2">
-            {NAV_LINKS.map((link) => (
-              <li key={link.label}>
-                <Link
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="block py-2.5 text-ink hover:text-signal-pink transition-colors"
-                  style={{
-                    fontFamily: "var(--font-ibm-plex-mono), monospace",
-                    fontSize: "14px",
-                    fontWeight: 500,
-                    letterSpacing: "0.06em",
-                    textTransform: "lowercase",
-                    textDecoration: "none",
-                  }}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-            <li className="pt-2">
-              <Link
-                href="/contact"
-                className="btn-primary w-full text-center justify-center"
-                onClick={() => setOpen(false)}
-                style={{ fontSize: "12px", padding: "0.75rem 1.25rem" }}
-              >
-                Let&apos;s Talk
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
-    </nav>
+      {/* Mobile drawer */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="md:hidden mt-4 pt-4 border-t border-[var(--azure-white)] flex flex-col gap-4 text-xs font-mono uppercase tracking-wider"
+          >
+            <Link
+              href="#projects"
+              onClick={() => setOpen(false)}
+              className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
+            >
+              Project
+            </Link>
+            <Link
+              href="#about"
+              onClick={() => setOpen(false)}
+              className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
+            >
+              About
+            </Link>
+            <Link
+              href="#services"
+              onClick={() => setOpen(false)}
+              className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
+            >
+              Service
+            </Link>
+            <Link
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-full bg-[var(--signal-pink)] text-[var(--cloud-white)] font-semibold"
+            >
+              <span>Contact</span>
+              <span>&rarr;</span>
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }

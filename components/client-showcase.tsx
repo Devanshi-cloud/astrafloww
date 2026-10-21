@@ -1,191 +1,176 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useRef } from "react";
-import { useInView } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 
 interface Project {
-  name: string;
-  client: string;
-  result: string;
-  tag: string;
-  color: string;
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  url: string;
+  description: string;
+  stats?: string;
+  image?: string;
 }
 
 const PROJECTS: Project[] = [
   {
-    name: "Zsure",
-    client: "zsure.in",
-    result:
-      "Detect deepfakes, voice clones, and AI impersonation before fraud spreads.",
-    tag: "AI Automation",
-    color: "var(--signal-pink)",
+    id: "zsure",
+    title: "ZSURE DEFENSE",
+    subtitle: "AI Threat & Voice Clone Prevention",
+    category: "AI Software Engineering",
+    url: "https://zsure.in",
+    description:
+      "Enterprise deepfake and automated fraud detection platform engineered to neutralize AI impersonation attacks before financial damage spreads.",
+    stats: "Sub-100ms detection latency",
+    image: "/images/platform-mockup.jpg",
   },
   {
-    name: "Hypotenuse Analytics",
-    client: "hypotenuseanalytics.com",
-    result:
-      "End-to-end surveillance systems — intelligent monitoring built for scale.",
-    tag: "Digital Experience",
-    color: "var(--ink)",
+    id: "hypotenuse",
+    title: "HYPOTENUSE ANALYTICS",
+    subtitle: "Mission-Critical Surveillance Infrastructure",
+    category: "Enterprise Software Platform",
+    url: "https://hypotenuseanalytics.com",
+    description:
+      "High-throughput surveillance systems and real-time telemetry processing built for large-scale enterprise deployments.",
+    stats: "99.999% SLA Uptime",
+    image: "/images/hero-software.jpg",
   },
   {
-    name: "OIA — Bennett University",
-    client: "Bennett University",
-    result:
-      "Official international affairs portal connecting students to global opportunities.",
-    tag: "Brand Systems",
-    color: "var(--signal-pink)",
+    id: "bennett",
+    title: "OIA BENNETT PORTAL",
+    subtitle: "Global Student Opportunity Engine",
+    category: "Web Application & CMS",
+    url: "https://bennett.edu.in",
+    description:
+      "High-performance institutional web portal connecting students to international exchange programs and academic partner universities.",
+    stats: "10,000+ Active Students",
   },
   {
-    name: "Drivers Australia",
-    client: "driversaustralia.com.au",
-    result:
-      "A dedicated drivers job portal — connecting professionals to opportunities across Australia.",
-    tag: "Search Authority",
-    color: "var(--ink)",
+    id: "drivers",
+    title: "DRIVERS AUSTRALIA",
+    subtitle: "National Logistics Job Marketplace",
+    category: "Platform Architecture & SEO",
+    url: "https://driversaustralia.com.au",
+    description:
+      "Specialized job portal connecting certified commercial logistics drivers across every state and territory in Australia.",
+    stats: "National Search Dominance",
   },
 ];
 
 export default function ClientShowcase() {
-  const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
   return (
-    <section
-      id="work"
-      ref={ref}
-      className="pixel-grid-bg py-12 md:py-24 px-4 sm:px-6"
-      style={{
-        borderTop: "2px solid var(--ink)",
-      }}
-    >
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-end",
-            justifyContent: "space-between",
-            marginBottom: "3rem",
-            gap: "1rem",
-            flexWrap: "wrap",
-          }}
-        >
-          <div>
-            <p
-              style={{
-                fontFamily: "var(--font-ibm-plex-mono), monospace",
-                fontSize: "10px",
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                color: "var(--signal-pink)",
-                marginBottom: "0.5rem",
-              }}
-            >
-              selected work
-            </p>
-            <h2 className="section-headline" style={{ color: "var(--ink)" }}>
-              What We&apos;ve
-              <br />
-              Built.
-            </h2>
+    <section id="projects" className="w-full bg-[var(--paper)] py-20 px-4 sm:px-10 md:px-16 border-t border-[var(--azure-white)]">
+      <div className="max-w-[1440px] mx-auto">
+        {/* Section Header */}
+        <div className="flex items-center justify-between mb-12">
+          <div className="flex items-center gap-3">
+            <span className="text-[var(--signal-pink)] font-mono text-xs uppercase tracking-widest font-semibold">
+              // OUR SOFTWARE PROJECTS
+            </span>
           </div>
-          <p
-            style={{
-              fontFamily: "var(--font-inter), sans-serif",
-              fontSize: "12px",
-              color: "rgba(17,17,17,0.5)",
-              fontStyle: "italic",
-              maxWidth: "220px",
-              textAlign: "right",
-            }}
-          >
-            Real work. Real results.
-          </p>
+
+          <div className="hidden sm:flex items-center gap-3 text-xs font-mono text-[var(--ink-muted)]">
+            <span>FEATURED CASE STUDIES</span>
+            <span>&rarr;</span>
+          </div>
         </div>
 
-        {/* Project grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-[var(--ink)]">
-          {PROJECTS.map((project, i) => (
-            <motion.div
-              key={project.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.45, delay: i * 0.1 }}
-              className={`p-6 sm:p-8 bg-[var(--cloud-white)] flex flex-col gap-4 border-[var(--ink)] ${
-                /* Mobile: horizontal dividers between stacked cards */
-                i < PROJECTS.length - 1 ? "border-b-2" : "border-b-0"
-              } ${
-                /* Tablet md (2 cols): right divider on odd items, bottom divider on first row */
-                i % 2 === 0 ? "md:border-r-2" : "md:border-r-0"
-              } ${
-                i < 2 ? "md:border-b-2" : "md:border-b-0"
-              } ${
-                /* Desktop lg (4 cols): right divider on items 0-2, no bottom divider */
-                i < PROJECTS.length - 1 ? "lg:border-r-2" : "lg:border-r-0"
-              } lg:border-b-0`}
+        {/* 2 Featured Large Cards Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 mb-10">
+          {PROJECTS.slice(0, 2).map((project) => (
+            <div
+              key={project.id}
+              className="group rounded-3xl overflow-hidden border border-[var(--azure-white)] bg-[var(--cloud-white)] flex flex-col justify-between hover:border-[var(--signal-pink)] transition-all duration-300 card-shadow"
             >
-              {/* Tag */}
-              <span
-                style={{
-                  display: "inline-block",
-                  fontFamily: "var(--font-ibm-plex-mono), monospace",
-                  fontSize: "9px",
-                  letterSpacing: "0.16em",
-                  textTransform: "uppercase",
-                  color: "var(--cloud-white)",
-                  backgroundColor: project.color,
-                  padding: "3px 8px",
-                  alignSelf: "flex-start",
-                }}
-              >
-                {project.tag}
-              </span>
+              {/* Card Media Preview Container */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-[var(--ink)]">
+                {project.image && (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover object-center group-hover:scale-103 transition-transform duration-500 opacity-90"
+                  />
+                )}
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 rounded-full bg-[var(--ink)]/80 backdrop-blur-md text-[var(--cloud-white)] text-[10px] font-mono uppercase tracking-wider border border-white/10">
+                    {project.category}
+                  </span>
+                </div>
+              </div>
 
-              {/* Title */}
-              <p
-                style={{
-                  fontFamily: "var(--font-space-grotesk), sans-serif",
-                  fontWeight: 700,
-                  fontSize: "1.1rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.04em",
-                  color: "var(--ink)",
-                  margin: 0,
-                }}
-              >
-                {project.name}
-              </p>
+              {/* Card Footer & Content */}
+              <div className="p-6 sm:p-8 flex items-end justify-between gap-6 bg-[var(--cloud-white)] border-t border-[var(--azure-white)]">
+                <div>
+                  <h3 className="font-display font-black text-2xl sm:text-3xl tracking-tight text-[var(--ink)] uppercase mb-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs font-mono text-[var(--ink-muted)] uppercase tracking-wider mb-3">
+                    {project.subtitle}
+                  </p>
+                  <p className="text-sm text-[var(--ink)]/75 line-clamp-2 font-sans max-w-md">
+                    {project.description}
+                  </p>
+                </div>
 
-              {/* Client */}
-              <p
-                style={{
-                  fontFamily: "var(--font-ibm-plex-mono), monospace",
-                  fontSize: "10px",
-                  letterSpacing: "0.1em",
-                  color: "rgba(17,17,17,0.45)",
-                  margin: 0,
-                }}
-              >
-                {project.client}
-              </p>
+                {/* Circular Arrow Button in strict lavender accent */}
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full bg-[var(--signal-pink)] text-white flex items-center justify-center flex-shrink-0 hover:bg-[#6c5ce7] transition-colors shadow-md"
+                  aria-label={`Open ${project.title}`}
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
 
-              {/* Result */}
-              <p
-                style={{
-                  fontFamily: "var(--font-inter), sans-serif",
-                  fontSize: "12px",
-                  lineHeight: 1.6,
-                  color: "rgba(17,17,17,0.7)",
-                  margin: 0,
-                  borderLeft: `3px solid ${project.color}`,
-                  paddingLeft: "12px",
-                }}
+        {/* 2 Supporting Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {PROJECTS.slice(2, 4).map((project) => (
+            <div
+              key={project.id}
+              className="p-8 rounded-3xl border border-[var(--azure-white)] bg-[var(--cloud-white)] flex items-center justify-between gap-6 hover:border-[var(--signal-pink)] transition-all card-shadow"
+            >
+              <div>
+                <span className="text-[10px] font-mono text-[var(--signal-pink)] uppercase tracking-wider font-semibold block mb-1">
+                  {project.category}
+                </span>
+                <h4 className="font-display font-bold text-xl text-[var(--ink)] uppercase mb-2">
+                  {project.title}
+                </h4>
+                <p className="text-xs text-[var(--ink-muted)] leading-relaxed max-w-sm">
+                  {project.description}
+                </p>
+              </div>
+
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-[var(--paper)] border border-[var(--azure-white)] text-[var(--ink)] flex items-center justify-center hover:bg-[var(--signal-pink)] hover:text-white hover:border-[var(--signal-pink)] transition-all flex-shrink-0"
               >
-                {project.result}
-              </p>
-            </motion.div>
+                &rarr;
+              </a>
+            </div>
           ))}
         </div>
       </div>

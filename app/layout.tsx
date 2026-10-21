@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, IBM_Plex_Mono, Playfair_Display } from "next/font/google";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
-import InitialLoader from "@/components/initial-loader";
 import CookieConsent from "@/components/CookieConsent";
 import SmoothScroll from "@/components/SmoothScroll";
 import AnalyticsGate from "@/components/AnalyticsGate";
@@ -27,6 +26,12 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
   display: "swap",
 });
 
@@ -150,7 +155,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable}`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable} ${playfair.variable}`}
     >
       <head>
         <script
@@ -160,7 +165,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="flex flex-col min-h-screen">
         <SmoothScroll>
-          <InitialLoader />
           <Nav />
           <main className="flex-1">{children}</main>
           <Footer />

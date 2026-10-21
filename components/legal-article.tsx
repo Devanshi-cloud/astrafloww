@@ -44,12 +44,12 @@ export default function LegalArticle({ content }: LegalArticleProps) {
     });
 
   return (
-    <div className="pixel-grid-bg min-h-screen pt-24 pb-20 px-4 sm:px-6">
+    <div className="bg-[var(--paper)] min-h-screen pt-28 sm:pt-36 pb-20 px-4 sm:px-6">
       <article className="max-w-3xl mx-auto">
         {/* Back Link */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[var(--ink)] hover:text-[var(--signal-pink)] transition-colors mb-8 focus:outline-none focus:ring-2 focus:ring-[var(--ink)]"
+          className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[var(--ink)] hover:text-[var(--signal-pink)] transition-colors mb-8 focus:outline-none"
         >
           &larr; Back to Home
         </Link>
@@ -58,7 +58,7 @@ export default function LegalArticle({ content }: LegalArticleProps) {
         {h2Lines.length > 0 && (
           <nav
             aria-label="Table of Contents"
-            className="p-6 bg-[var(--cloud-white)] border-2 border-[var(--ink)] mb-10 pixel-shadow"
+            className="p-6 bg-[var(--cloud-white)] border border-[var(--azure-white)] rounded-2xl mb-10 card-shadow"
           >
             <p
               className="font-mono text-xs uppercase tracking-widest text-[var(--signal-pink)] font-bold mb-3"

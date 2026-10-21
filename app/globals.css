@@ -1,33 +1,41 @@
 @import "tailwindcss";
 
 /* ==========================================
-   AstraFloww Design System — Color Tokens
+   AstraFloww Design System — Strict Brand Tokens
+   Exclusively:
+   --paper: #F4F8FC
+   --ink: #0F041A
+   --signal-pink: #7C6DF6
+   --azure-white: #D1DCF9
+   --cloud-white: #FFFFFF
    ========================================== */
 :root {
-  /* New Color Palette */
+  /* Core Brand Tokens */
   --paper: #F4F8FC;        /* Alış Mavisi — Page background */
-  --ink: #0F041A;          /* Koyu Mor — Primary text, headlines, outlines, dark surfaces */
-  --signal-pink: #7C6DF6;  /* Parlak Lavanta — Primary accent, CTAs, highlight blocks */
-  --signal-green: #D1DCF9; /* Azur Beyazı — Secondary accent */
-  --cloud-white: #FFFFFF;  /* Crisp white card fills */
-  --grid-line: #D1DCF9;    /* Azur Beyazı — Pixel grid lines */
+  --ink: #0F041A;          /* Koyu Mor — Primary text & dark surfaces */
+  --signal-pink: #7C6DF6;  /* Parlak Lavanta — Primary accent & CTAs */
+  --azure-white: #D1DCF9;  /* Azur Beyazı — Hairline borders & subtle outlines */
+  --cloud-white: #FFFFFF;  /* Crisp card surfaces */
+  --grid-line: #D1DCF9;    /* Dividers */
 
-  /* Palette Named Tokens */
-  --azur-beyazi: #D1DCF9;
-  --alis-mavisi: #F4F8FC;
-  --koyu-mor: #0F041A;
-  --parlak-lavanta: #7C6DF6;
-
-  /* Semantic Aliases */
-  --azure-white: var(--azur-beyazi);
-  --alice-blue: var(--alis-mavisi);
-  --dark-purple: var(--koyu-mor);
-  --bright-lavender: var(--parlak-lavanta);
+  /* Translucent Overlays */
+  --ink-muted: rgba(15, 4, 26, 0.65);
+  --ink-faint: rgba(15, 4, 26, 0.1);
+  --white-muted: rgba(255, 255, 255, 0.7);
+  --white-faint: rgba(255, 255, 255, 0.12);
 
   /* Typography scale */
   --font-display: var(--font-space-grotesk);
   --font-body: var(--font-inter);
   --font-mono: var(--font-ibm-plex-mono);
+  --font-serif: var(--font-playfair);
+
+  /* Radius Tokens */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
 }
 
 /* Tailwind v4 theme extension */
@@ -35,20 +43,16 @@
   --color-paper: var(--paper);
   --color-ink: var(--ink);
   --color-signal-pink: var(--signal-pink);
-  --color-signal-green: var(--signal-green);
+  --color-azure-white: var(--azure-white);
   --color-cloud-white: var(--cloud-white);
   --color-grid-line: var(--grid-line);
-  --color-azur-beyazi: var(--azur-beyazi);
-  --color-alis-mavisi: var(--alis-mavisi);
-  --color-koyu-mor: var(--koyu-mor);
-  --color-parlak-lavanta: var(--parlak-lavanta);
-  --color-azure-white: var(--azure-white);
-  --color-alice-blue: var(--alice-blue);
-  --color-dark-purple: var(--dark-purple);
-  --color-bright-lavender: var(--bright-lavender);
+  --color-ink-muted: var(--ink-muted);
+  --color-white-muted: var(--white-muted);
+
   --font-display: var(--font-space-grotesk);
   --font-body: var(--font-inter);
   --font-mono: var(--font-ibm-plex-mono);
+  --font-serif: var(--font-playfair);
 }
 
 /* ==========================================
@@ -56,20 +60,19 @@
    ========================================== */
 *, *::before, *::after {
   box-sizing: border-box;
-  /* Hard constraint from PRD: no border-radius anywhere */
-  border-radius: 0 !important;
 }
 
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background-color: var(--paper);
 }
 
 body {
   background-color: var(--paper);
   color: var(--ink);
-  font-family: var(--font-body), Arial, sans-serif;
-  font-size: 13px;
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -78,154 +81,82 @@ body {
 }
 
 /* ==========================================
-   Pixel Grid Background
-   Repeating 24px squares — "graph paper" feel
-   ========================================== */
-.pixel-grid-bg {
-  background-color: var(--paper);
-  background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* Lavender section (replaces pink) */
-.pink-section,
-.lavender-section {
-  background-color: var(--signal-pink);
-  color: var(--cloud-white);
-}
-
-/* ==========================================
-   Typography Utilities
+   Typography Classes
    ========================================== */
 .font-display {
-  font-family: var(--font-display), 'Arial Black', sans-serif;
-  font-weight: 700;
+  font-family: var(--font-display), sans-serif;
+}
+
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
 }
 
 .font-mono-label {
   font-family: var(--font-mono), monospace;
   font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: lowercase;
-}
-
-.text-uppercase-dense {
-  text-transform: uppercase;
   letter-spacing: 0.12em;
-  font-weight: 700;
+  text-transform: uppercase;
 }
 
-/* Hero headline size — responsive clamp */
-.hero-headline {
-  font-family: var(--font-display), 'Arial Black', sans-serif;
-  font-weight: 700;
-  font-size: clamp(2.125rem, 7vw, 6rem);
+/* Hero Display Headline */
+.hero-display {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 7vw, 6.25rem);
   line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+/* Section Title */
+.section-title {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4.5vw, 3.75rem);
+  line-height: 1.05;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  overflow-wrap: break-word;
-}
-
-/* Section headline */
-.section-headline {
-  font-family: var(--font-display), 'Arial Black', sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.75rem, 4vw, 3.5rem);
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-  line-height: 1;
-  overflow-wrap: break-word;
-}
-
-/* Stat number */
-.stat-number {
-  font-family: var(--font-display), 'Arial Black', sans-serif;
-  font-weight: 700;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  line-height: 1;
-  color: var(--ink);
 }
 
 /* ==========================================
-   Pixel Hard Shadow — blocky, no blur
+   Pill & Action Button Utilities
    ========================================== */
-.pixel-shadow {
-  box-shadow: 4px 4px 0 var(--ink);
-}
-
-.pixel-shadow-pink,
-.pixel-shadow-lavender {
-  box-shadow: 4px 4px 0 var(--signal-pink);
-}
-
-.pixel-shadow-azure {
-  box-shadow: 4px 4px 0 var(--azure-white);
-}
-
-.pixel-shadow-white {
-  box-shadow: 4px 4px 0 var(--cloud-white);
-}
-
-/* ==========================================
-   Button Base
-   ========================================== */
-.btn-primary {
+.btn-pill-primary {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  padding: 0.625rem 1.5rem;
   background-color: var(--signal-pink);
   color: var(--cloud-white);
+  border-radius: var(--radius-full);
   font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: 0.875rem;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.875rem 2rem;
-  min-height: 44px;
-  border: 2px solid var(--ink);
-  box-shadow: 4px 4px 0 var(--ink);
-  cursor: pointer;
   text-decoration: none;
-  transition: transform 80ms ease, box-shadow 80ms ease;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(124, 109, 246, 0.3);
 }
 
-.btn-primary:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 var(--ink);
+.btn-pill-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124, 109, 246, 0.45);
+  background-color: #6C5CE7;
 }
 
-.btn-primary:active {
-  transform: translate(4px, 4px);
-  box-shadow: 0 0 0 var(--ink);
+/* Card hover */
+.card-shadow {
+  box-shadow: 0 10px 30px -10px rgba(15, 4, 26, 0.06), 0 1px 3px rgba(15, 4, 26, 0.04);
 }
 
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background-color: transparent;
-  color: var(--ink);
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.75rem 1.75rem;
-  min-height: 44px;
-  border: 2px solid var(--ink);
-  box-shadow: 4px 4px 0 var(--ink);
-  cursor: pointer;
-  text-decoration: none;
-  transition: transform 80ms ease, box-shadow 80ms ease;
+.card-shadow-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-outline:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 var(--ink);
+.card-shadow-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -15px rgba(124, 109, 246, 0.2);
 }
 
 /* ==========================================

@@ -1,17 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactNode } from "react";
 import { ReactLenis } from "lenis/react";
 import "lenis/dist/lenis.css";
 
-export default function SmoothScroll({ children }) {
+interface SmoothScrollProps {
+  children: ReactNode;
+}
+
+export default function SmoothScroll({ children }: SmoothScrollProps) {
   const [shouldReduceMotion, setShouldReduceMotion] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     setShouldReduceMotion(mediaQuery.matches);
 
-    const onChange = (event) => {
+    const onChange = (event: MediaQueryListEvent) => {
       setShouldReduceMotion(event.matches);
     };
 
@@ -27,7 +31,7 @@ export default function SmoothScroll({ children }) {
     <ReactLenis
       root
       options={{
-        lerp: 0.1,
+        lerp: 0.09,
         duration: 1.2,
         smoothWheel: true,
       }}
