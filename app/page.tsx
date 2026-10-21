@@ -3,8 +3,7 @@ import Hero from "@/components/hero";
 import AboutSection from "@/components/about-section";
 import ClientShowcase from "@/components/client-showcase";
 import ServicesPricing from "@/components/services-pricing";
-import ManifestoStats from "@/components/manifesto-stats";
-import Testimonials from "@/components/testimonials";
+import TeamSection from "@/components/team-section";
 import ContactSection from "@/components/contact-section";
 
 export const metadata: Metadata = {
@@ -31,11 +30,10 @@ export default function LandingPage() {
       {/* 4. Services & Pricing Section (Build Products That Move Businesses Forward + Pricing) */}
       <ServicesPricing />
 
+      {/* 5. Team Section (Creative Minds Behind Our Success) */}
+      <TeamSection />
 
-      {/* 6. Client Testimonial */}
-      <Testimonials />
-
-      {/* 7. Contact & Inquiry Portal */}
+      {/* 6. Contact & Inquiry Portal */}
       <ContactSection />
     </>
   );
