@@ -50,6 +50,12 @@ export default function Nav() {
               Service
             </Link>
             <Link
+              href="#team"
+              className="hover:text-[var(--signal-pink)] transition-colors"
+            >
+              Team
+            </Link>
+            <Link
               href="#contact"
               className="hover:text-[var(--signal-pink)] transition-colors"
             >
@@ -119,6 +125,13 @@ export default function Nav() {
               className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
             >
               Service
+            </Link>
+            <Link
+              href="#team"
+              onClick={() => setOpen(false)}
+              className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
+            >
+              Team
             </Link>
             <Link
               href="/contact"
