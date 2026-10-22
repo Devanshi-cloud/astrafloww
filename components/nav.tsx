@@ -68,10 +68,10 @@ export default function Nav() {
               Services
             </Link>
             <Link
-              href="/team"
+              href="/solutions"
               className="hover:text-[var(--signal-pink)] transition-colors"
             >
-              Team
+              Solutions
             </Link>
           </nav>
 
@@ -139,11 +139,11 @@ export default function Nav() {
               Services
             </Link>
             <Link
-              href="/team"
+              href="/solutions"
               onClick={() => setOpen(false)}
               className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
             >
-              Team
+              Solutions
             </Link>
             <Link
               href="/contact"

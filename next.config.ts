@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "hebbkx1anhila5yf.public.blob.vercel-storage.com" }],
+  },
   env: {
     EMAIL_PROVIDER:
       process.env.EMAIL_PROVIDER || process.env.MAIL_PROVIDER || "",
@@ -27,16 +30,6 @@ const nextConfig: NextConfig = {
       process.env.GMAIL_FROM_NAME ||
       process.env.BREVO_FROM_NAME ||
       "AstraFloww",
-  },
-  async redirects() {
-    return [
-      {
-        source: "/team",
-        destination: "/#team",
-        permanent: false,
-      },
-
-    ];
   },
 };
 

@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
-export default function TeamPage() {
-  redirect("/#team");
+export default function TeamRoute() {
+  redirect("/solutions");
 }
