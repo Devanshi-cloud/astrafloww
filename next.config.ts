@@ -35,21 +35,7 @@ const nextConfig: NextConfig = {
         destination: "/#team",
         permanent: false,
       },
-      {
-        source: "/projects",
-        destination: "/#projects",
-        permanent: false,
-      },
-      {
-        source: "/about",
-        destination: "/#about",
-        permanent: false,
-      },
-      {
-        source: "/services",
-        destination: "/#services",
-        permanent: false,
-      },
+
     ];
   },
 };

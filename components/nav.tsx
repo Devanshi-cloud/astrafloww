@@ -67,21 +67,21 @@ export default function Nav() {
         <div className="hidden md:flex items-center gap-10">
           <nav className="flex items-center gap-8 text-[13px] font-mono uppercase tracking-wider text-[var(--ink)]/75">
             <Link
-              href="/#projects"
+              href="/projects"
               onClick={(e) => handleAnchorClick(e, "/#projects")}
               className="hover:text-[var(--signal-pink)] transition-colors"
             >
               Project
             </Link>
             <Link
-              href="/#about"
+              href="/about"
               onClick={(e) => handleAnchorClick(e, "/#about")}
               className="hover:text-[var(--signal-pink)] transition-colors"
             >
               About
             </Link>
             <Link
-              href="/#services"
+              href="/services"
               onClick={(e) => handleAnchorClick(e, "/#services")}
               className="hover:text-[var(--signal-pink)] transition-colors"
             >
@@ -146,21 +146,21 @@ export default function Nav() {
             className="md:hidden mt-4 pt-4 border-t border-[var(--azure-white)] flex flex-col gap-4 text-xs font-mono uppercase tracking-wider"
           >
             <Link
-              href="/#projects"
+              href="/projects"
               onClick={(e) => handleAnchorClick(e, "/#projects")}
               className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
             >
               Project
             </Link>
             <Link
-              href="/#about"
+              href="/about"
               onClick={(e) => handleAnchorClick(e, "/#about")}
               className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
             >
               About
             </Link>
             <Link
-              href="/#services"
+              href="/services"
               onClick={(e) => handleAnchorClick(e, "/#services")}
               className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
             >
