@@ -117,7 +117,7 @@ export default function ClientShowcase() {
 
                 {/* Circular Arrow Button in strict lavender accent */}
                 <a
-                  href={project.url}
+                  href={`/projects/${project.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-full bg-[var(--signal-pink)] text-white flex items-center justify-center flex-shrink-0 hover:bg-[#6c5ce7] transition-colors shadow-md"
@@ -163,7 +163,7 @@ export default function ClientShowcase() {
               </div>
 
               <a
-                href={project.url}
+                href={`/projects/${project.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-[var(--paper)] border border-[var(--azure-white)] text-[var(--ink)] flex items-center justify-center hover:bg-[var(--signal-pink)] hover:text-white hover:border-[var(--signal-pink)] transition-all flex-shrink-0"
