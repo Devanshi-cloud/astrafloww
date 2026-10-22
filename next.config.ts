@@ -28,6 +28,30 @@ const nextConfig: NextConfig = {
       process.env.BREVO_FROM_NAME ||
       "AstraFloww",
   },
+  async redirects() {
+    return [
+      {
+        source: "/team",
+        destination: "/#team",
+        permanent: false,
+      },
+      {
+        source: "/projects",
+        destination: "/#projects",
+        permanent: false,
+      },
+      {
+        source: "/about",
+        destination: "/#about",
+        permanent: false,
+      },
+      {
+        source: "/services",
+        destination: "/#services",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

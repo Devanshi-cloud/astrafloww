@@ -68,19 +68,6 @@ const TEAM_MEMBERS: TeamMember[] = [
     linkedinUrl: "https://linkedin.com",
   },
   {
-    id: "shrish",
-    name: "Shrish",
-    role: "Senior Systems & Cloud Engineer",
-    department: "Dev Team",
-    avatarUrl: "/images/avatars/shrish.svg",
-    bgColor: "#34D399", // Emerald mint
-    // Modernist asymmetric arch portal
-    shapePath:
-      "M 140,0 C 60,0 0,60 0,140 L 0,310 C 0,330 15,340 35,340 L 245,340 C 265,340 280,330 280,310 L 280,50 C 280,18 262,0 230,0 Z",
-    websiteUrl: "#",
-    linkedinUrl: "https://linkedin.com",
-  },
-  {
     id: "satveek",
     name: "Satveek",
     role: "Full-Stack & Core Systems Engineer",
@@ -90,6 +77,19 @@ const TEAM_MEMBERS: TeamMember[] = [
     // Symmetrical scalloped blossom portal
     shapePath:
       "M 65,0 C 20,0 0,20 0,65 C 0,115 22,130 22,170 C 22,210 0,225 0,275 C 0,320 20,340 65,340 L 215,340 C 260,340 280,320 280,275 C 280,225 258,210 258,170 C 258,130 280,115 280,65 C 280,20 260,0 215,0 Z",
+    websiteUrl: "#",
+    linkedinUrl: "https://linkedin.com",
+  },
+  {
+    id: "shrish",
+    name: "Shrish",
+    role: "Senior Systems & Cloud Engineer",
+    department: "Dev Team",
+    avatarUrl: "/images/avatars/shrish.svg",
+    bgColor: "#34D399", // Emerald mint
+    // Modernist asymmetric arch portal
+    shapePath:
+      "M 140,0 C 60,0 0,60 0,140 L 0,310 C 0,330 15,340 35,340 L 245,340 C 265,340 280,330 280,310 L 280,50 C 280,18 262,0 230,0 Z",
     websiteUrl: "#",
     linkedinUrl: "https://linkedin.com",
   },

@@ -3,15 +3,50 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { useLenis } from "lenis/react";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const lenis = useLenis();
+
+  const handleAnchorClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    setOpen(false);
+    if (pathname === "/" && href.startsWith("/#")) {
+      e.preventDefault();
+      const hash = href.replace("/", "");
+      window.history.pushState(null, "", href);
+      if (lenis) {
+        lenis.scrollTo(hash, { duration: 1.2 });
+      } else {
+        document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <header className="w-full bg-[var(--paper)] py-6 px-6 sm:px-12 md:px-16 select-none border-b border-[var(--azure-white)]/60">
       <div className="max-w-[1440px] mx-auto flex items-center justify-between">
         {/* Minimal geometric logo icon */}
-        <Link href="/" className="flex items-center gap-3 no-underline group">
+        <Link
+          href="/"
+          onClick={(e) => {
+            if (pathname === "/") {
+              e.preventDefault();
+              window.history.pushState(null, "", "/");
+              if (lenis) {
+                lenis.scrollTo(0, { duration: 1.2 });
+              } else {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }
+          }}
+          className="flex items-center gap-3 no-underline group"
+        >
           <div className="w-7 h-7 flex items-center justify-center">
             <svg
               width="24"
@@ -32,31 +67,36 @@ export default function Nav() {
         <div className="hidden md:flex items-center gap-10">
           <nav className="flex items-center gap-8 text-[13px] font-mono uppercase tracking-wider text-[var(--ink)]/75">
             <Link
-              href="#projects"
+              href="/#projects"
+              onClick={(e) => handleAnchorClick(e, "/#projects")}
               className="hover:text-[var(--signal-pink)] transition-colors"
             >
               Project
             </Link>
             <Link
-              href="#about"
+              href="/#about"
+              onClick={(e) => handleAnchorClick(e, "/#about")}
               className="hover:text-[var(--signal-pink)] transition-colors"
             >
               About
             </Link>
             <Link
-              href="#services"
+              href="/#services"
+              onClick={(e) => handleAnchorClick(e, "/#services")}
               className="hover:text-[var(--signal-pink)] transition-colors"
             >
               Service
             </Link>
             <Link
-              href="#team"
+              href="/#team"
+              onClick={(e) => handleAnchorClick(e, "/#team")}
               className="hover:text-[var(--signal-pink)] transition-colors"
             >
               Team
             </Link>
             <Link
-              href="#contact"
+              href="/#contact"
+              onClick={(e) => handleAnchorClick(e, "/#contact")}
               className="hover:text-[var(--signal-pink)] transition-colors"
             >
               Contact
@@ -106,29 +146,29 @@ export default function Nav() {
             className="md:hidden mt-4 pt-4 border-t border-[var(--azure-white)] flex flex-col gap-4 text-xs font-mono uppercase tracking-wider"
           >
             <Link
-              href="#projects"
-              onClick={() => setOpen(false)}
+              href="/#projects"
+              onClick={(e) => handleAnchorClick(e, "/#projects")}
               className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
             >
               Project
             </Link>
             <Link
-              href="#about"
-              onClick={() => setOpen(false)}
+              href="/#about"
+              onClick={(e) => handleAnchorClick(e, "/#about")}
               className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
             >
               About
             </Link>
             <Link
-              href="#services"
-              onClick={() => setOpen(false)}
+              href="/#services"
+              onClick={(e) => handleAnchorClick(e, "/#services")}
               className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
             >
               Service
             </Link>
             <Link
-              href="#team"
-              onClick={() => setOpen(false)}
+              href="/#team"
+              onClick={(e) => handleAnchorClick(e, "/#team")}
               className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
             >
               Team
