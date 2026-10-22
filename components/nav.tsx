@@ -11,23 +11,6 @@ export default function Nav() {
   const pathname = usePathname();
   const lenis = useLenis();
 
-  const handleAnchorClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    setOpen(false);
-    if (pathname === "/" && href.startsWith("/#")) {
-      e.preventDefault();
-      const hash = href.replace("/", "");
-      window.history.pushState(null, "", href);
-      if (lenis) {
-        lenis.scrollTo(hash, { duration: 1.2 });
-      } else {
-        document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
-
   return (
     <header className="w-full bg-[var(--paper)] py-6 px-6 sm:px-12 md:px-16 select-none border-b border-[var(--azure-white)]/60">
       <div className="max-w-[1440px] mx-auto flex items-center justify-between">
@@ -68,38 +51,27 @@ export default function Nav() {
           <nav className="flex items-center gap-8 text-[13px] font-mono uppercase tracking-wider text-[var(--ink)]/75">
             <Link
               href="/projects"
-              onClick={(e) => handleAnchorClick(e, "/#projects")}
               className="hover:text-[var(--signal-pink)] transition-colors"
             >
-              Project
+              Projects
             </Link>
             <Link
               href="/about"
-              onClick={(e) => handleAnchorClick(e, "/#about")}
               className="hover:text-[var(--signal-pink)] transition-colors"
             >
               About
             </Link>
             <Link
               href="/services"
-              onClick={(e) => handleAnchorClick(e, "/#services")}
               className="hover:text-[var(--signal-pink)] transition-colors"
             >
-              Service
+              Services
             </Link>
             <Link
-              href="/#team"
-              onClick={(e) => handleAnchorClick(e, "/#team")}
+              href="/team"
               className="hover:text-[var(--signal-pink)] transition-colors"
             >
               Team
-            </Link>
-            <Link
-              href="/#contact"
-              onClick={(e) => handleAnchorClick(e, "/#contact")}
-              className="hover:text-[var(--signal-pink)] transition-colors"
-            >
-              Contact
             </Link>
           </nav>
 
@@ -147,28 +119,28 @@ export default function Nav() {
           >
             <Link
               href="/projects"
-              onClick={(e) => handleAnchorClick(e, "/#projects")}
+              onClick={() => setOpen(false)}
               className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
             >
-              Project
+              Projects
             </Link>
             <Link
               href="/about"
-              onClick={(e) => handleAnchorClick(e, "/#about")}
+              onClick={() => setOpen(false)}
               className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
             >
               About
             </Link>
             <Link
               href="/services"
-              onClick={(e) => handleAnchorClick(e, "/#services")}
+              onClick={() => setOpen(false)}
               className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
             >
-              Service
+              Services
             </Link>
             <Link
-              href="/#team"
-              onClick={(e) => handleAnchorClick(e, "/#team")}
+              href="/team"
+              onClick={() => setOpen(false)}
               className="text-[var(--ink)] hover:text-[var(--signal-pink)]"
             >
               Team
